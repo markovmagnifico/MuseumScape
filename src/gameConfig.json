@@ -1,0 +1,22 @@
+{
+  "walls": [
+    { "x": 5, "z": 5, "width": 1, "height": 2, "depth": 1 },
+    { "x": -5, "z": -5, "width": 1, "height": 2, "depth": 1 }
+  ],
+  "spotlights": [
+    {
+      "color": "0xffffff",
+      "intensity": 30,
+      "distance": 20,
+      "angle": 0.523599,
+      "penumbra": 0.5,
+      "decay": 2,
+      "position": { "x": 3, "y": 5, "z": 3 },
+      "target": { "x": 0, "y": 0, "z": 0 }
+    }
+  ],
+  "items": [
+    { "x": 2, "y": 1, "z": 2, "type": "painting" },
+    { "x": -2, "y": 1, "z": -2, "type": "guard" }
+  ]
+}

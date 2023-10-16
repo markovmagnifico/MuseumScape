@@ -1,16 +1,19 @@
 import * as THREE from 'three';
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js';
 import { gravity } from './Constants';
+import Wall from './Wall';
 
 export default class Player {
-  constructor(scene, canvas, camera) {
+  constructor(scene, canvas, camera, stateManager) {
     // General onstants
     this.scene = scene;
     this.controls = null;
     this.camera = camera;
+    this.stateManager = stateManager;
 
     // Player constants
     this.playerHeight = 2;
+    this.playerRadius = 0.5;
     this.speed = 0.1;
     this.jumpForce = 0.15; // Upward force applied when jumping
 
@@ -19,10 +22,12 @@ export default class Player {
     this.velocity = new THREE.Vector3(0, 0, 0);
     this.canJump = true;
     this.hasDoubleJumped = false;
+
     // Initialize geometry, material, mesh, etc.
     this.initPlayerModel();
     this.initControls(canvas);
     this.initEventListeners();
+    this.boundingSphere = new THREE.Sphere(this.position, this.playerRadius);
     this.keystate = { KeyW: false, KeyS: false, KeyA: false, KeyD: false };
   }
 
@@ -33,9 +38,10 @@ export default class Player {
       this.playerHeight,
       32
     ); // Parameters for a cylinder
-    const playerMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 }); // Red color
+    const playerMaterial = new THREE.MeshToonMaterial({ color: 0xff0000 }); // Red color
     const player = new THREE.Mesh(playerGeometry, playerMaterial);
-    player.position.y = 1; // Position it on top of the grid
+
+    player.position.y = 2; // Position it on top of the grid
     console.log(player.position);
     this.scene.add(player);
   }
@@ -65,7 +71,9 @@ export default class Player {
             this.velocity.setY(this.velocity.y + this.jumpForce);
             this.canJump = false;
           } else if (!this.hasDoubleJumped) {
-            this.velocity.setY(this.velocity.y + this.jumpForce);
+            this.velocity.setY(
+              Math.max(this.velocity.y + this.jumpForce, this.jumpForce)
+            );
             this.hasDoubleJumped = true;
           }
         }
@@ -112,6 +120,7 @@ export default class Player {
       }
 
       this.position.add(movementVector.normalize().multiplyScalar(this.speed));
+      this.boundingSphere.set(this.position, this.playerRadius);
     }
 
     // Apply gravity
@@ -125,6 +134,35 @@ export default class Player {
       this.velocity.setY(0); // Reset vertical velocity
       this.hasDoubleJumped = false; // Reset the double-jump state
     }
+
+    const walls = this.stateManager.getEntities(Wall);
+    for (let wall of walls) {
+      if (this.boundingSphere.intersectsBox(wall.boundingBox)) {
+        // Collision detected
+
+        // Find the closest point on the wall's bounding box to the player's position
+        const closestPoint = new THREE.Vector3();
+        wall.boundingBox.clampPoint(this.position, closestPoint);
+
+        // Compute the collision response vector
+        const collisionResponse = new THREE.Vector3()
+          .subVectors(this.position, closestPoint)
+          .normalize();
+
+        // Adjust the player's movement vector
+        const overlap =
+          this.boundingSphere.radius -
+          closestPoint.distanceTo(this.position) +
+          0.01; // Adding a small value to ensure there's no overlap
+        collisionResponse.multiplyScalar(overlap);
+        this.position.add(collisionResponse);
+
+        console.log('WALL COLLISION');
+        break;
+      }
+    }
+
+    this.boundingSphere.set(this.position, this.playerRadius);
 
     camera.position.x = this.position.x;
     camera.position.y = this.position.y + this.playerHeight * 0.3; // This puts the camera position at 80% the height of the player
