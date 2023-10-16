@@ -1,4 +1,3 @@
-import { DataTextureLoader } from 'three';
 import GameLoader from './GameLoader';
 
 export default class GameStateManager {
@@ -10,12 +9,14 @@ export default class GameStateManager {
 
   loadConfig(config) {
     const walls = this.loader.initWalls(config.walls, this.scene);
+    const walls2 = this.loader.initRooms(config.rooms, this.scene);
     const spotlights = this.loader.initSpotlights(
       config.spotlights,
       this.scene
     );
 
     this.addEntities(walls);
+    this.addEntities(walls2);
     this.addEntities(spotlights);
   }
 

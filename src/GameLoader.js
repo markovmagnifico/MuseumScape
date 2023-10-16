@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import Wall from './Wall.js';
+import Room from './Room.js';
 
 export default class GameLoader {
   static spotlightDefaults = {
@@ -22,6 +23,17 @@ export default class GameLoader {
     wallData.forEach((data) => {
       const wall = new Wall(scene, data);
       walls.push(wall);
+    });
+    return walls;
+  }
+
+  initRooms(roomData, scene) {
+    const rooms = [];
+    const walls = [];
+    roomData.forEach((data) => {
+      const room = new Room(scene, data);
+      rooms.push(room);
+      walls.push(...room.getWalls());
     });
     return walls;
   }
@@ -49,6 +61,12 @@ export default class GameLoader {
         spotlightProps.target.z
       );
       spotlight.castShadow = true;
+
+      // Some optional stuff to tweak
+      // spotlight.shadow.mapSize.width = 1024; // Default is 512, increase for better shadow resolution
+      // spotlight.shadow.mapSize.height = 1024; // Default is 512, increase for better shadow resolution
+      // spotlight.shadow.bias = 0.0001; // You might need to adjust this value if you notice shadow artifacts
+
       scene.add(spotlight);
       scene.add(spotlight.target);
       spotlights.push(spotlight);

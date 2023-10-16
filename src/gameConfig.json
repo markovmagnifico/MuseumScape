@@ -1,18 +1,63 @@
 {
   "walls": [
     { "x": 5, "z": 5, "width": 1, "height": 2, "depth": 1 },
-    { "x": -5, "z": -5, "width": 1, "height": 2, "depth": 1 }
+    { "x": -5, "z": -5, "width": 1, "height": 2, "depth": 1 },
+    {
+      "x": 0,
+      "y": -0.5,
+      "z": 0,
+      "width": 50,
+      "height": 1,
+      "depth": 50,
+      "color": "#fff5e1"
+    }
+  ],
+  "rooms": [
+    {
+      "x": 0,
+      "z": 0,
+      "width": 12,
+      "depth": 26,
+      "doors": [
+        { "wall": "west", "position": 6 },
+        { "wall": "east", "position": -6 }
+      ]
+    },
+    {
+      "x": -12,
+      "z": 6,
+      "width": 12,
+      "depth": 26,
+      "doors": [{ "wall": "east", "position": 0 }]
+    },
+    {
+      "x": 12,
+      "z": -6,
+      "width": 12,
+      "depth": 26,
+      "doors": [{ "wall": "west", "position": 0 }]
+    }
   ],
   "spotlights": [
     {
-      "color": "0xffffff",
-      "intensity": 30,
+      "color": "#ffffff",
+      "intensity": 50,
       "distance": 20,
       "angle": 0.523599,
       "penumbra": 0.5,
       "decay": 2,
       "position": { "x": 3, "y": 5, "z": 3 },
       "target": { "x": 0, "y": 0, "z": 0 }
+    },
+    {
+      "color": "#ffffff",
+      "intensity": 50,
+      "distance": 20,
+      "angle": 0.523599,
+      "penumbra": 0.5,
+      "decay": 2,
+      "position": { "x": 0, "y": 5, "z": 0 },
+      "target": { "x": -3, "y": 0, "z": -3 }
     }
   ],
   "items": [

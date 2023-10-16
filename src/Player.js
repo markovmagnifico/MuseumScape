@@ -41,6 +41,8 @@ export default class Player {
     const playerMaterial = new THREE.MeshToonMaterial({ color: 0xff0000 }); // Red color
     const player = new THREE.Mesh(playerGeometry, playerMaterial);
 
+    player.castShadow = true;
+    player.receiveShadow = true;
     player.position.y = 2; // Position it on top of the grid
     console.log(player.position);
     this.scene.add(player);
@@ -128,14 +130,15 @@ export default class Player {
     this.position.y += this.velocity.y;
 
     // Ground collision detection
-    if (this.position.y <= 1) {
-      this.position.y = 1;
-      this.canJump = true; // Player can jump again
-      this.velocity.setY(0); // Reset vertical velocity
-      this.hasDoubleJumped = false; // Reset the double-jump state
-    }
+    // if (this.position.y <= 1) {
+    //   this.position.y = 1;
+    //   this.canJump = true; // Player can jump again
+    //   this.velocity.setY(0); // Reset vertical velocity
+    //   this.hasDoubleJumped = false; // Reset the double-jump state
+    // }
 
     const walls = this.stateManager.getEntities(Wall);
+    let isOnSolidGround = false;
     for (let wall of walls) {
       if (this.boundingSphere.intersectsBox(wall.boundingBox)) {
         // Collision detected
@@ -157,9 +160,16 @@ export default class Player {
         collisionResponse.multiplyScalar(overlap);
         this.position.add(collisionResponse);
 
-        console.log('WALL COLLISION');
-        break;
+        if (this.position.y > wall.boundingBox.max.y && this.velocity.y <= 0) {
+          isOnSolidGround = true;
+        }
       }
+    }
+
+    if (isOnSolidGround) {
+      this.canJump = true;
+      this.velocity.setY(0); // Reset vertical velocity
+      this.hasDoubleJumped = false; // Reset the double-jump state
     }
 
     this.boundingSphere.set(this.position, this.playerRadius);
