@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 import Wall from './Wall.js';
-import GameStateManager from './GameStateManager.js';
 
 export default class GameLoader {
   static spotlightDefaults = {
@@ -14,25 +13,21 @@ export default class GameLoader {
     target: { x: 0, y: 0, z: 0 },
   };
 
-  constructor(scene, debug) {
-    this.scene = scene;
+  constructor(debug) {
     this.debug = debug !== undefined ? debug : false;
-    this.stateManager = new GameStateManager();
   }
 
-  loadConfig(config) {
-    this.initWalls(config.walls);
-    this.initSpotlights(config.spotlights);
-  }
-
-  initWalls(wallData) {
-    wallData.forEach((wall) => {
-      const newWall = new Wall(this.scene, wall);
-      this.stateManager.addEntity(newWall);
+  initWalls(wallData, scene) {
+    const walls = [];
+    wallData.forEach((data) => {
+      const wall = new Wall(scene, data);
+      walls.push(wall);
     });
+    return walls;
   }
 
-  initSpotlights(spotlightData) {
+  initSpotlights(spotlightData, scene) {
+    const spotlights = [];
     spotlightData.forEach((data) => {
       const spotlightProps = { ...GameLoader.spotlightDefaults, ...data };
       const spotlight = new THREE.SpotLight(
@@ -54,12 +49,14 @@ export default class GameLoader {
         spotlightProps.target.z
       );
       spotlight.castShadow = true;
-      this.scene.add(spotlight);
-      this.scene.add(spotlight.target);
+      scene.add(spotlight);
+      scene.add(spotlight.target);
+      spotlights.push(spotlight);
       if (this.debug) {
         const lightHelper = new THREE.SpotLightHelper(spotlight);
-        this.scene.add(lightHelper);
+        scene.add(lightHelper);
       }
     });
+    return spotlights;
   }
 }

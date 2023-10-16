@@ -1,28 +1,26 @@
 import * as THREE from 'three';
 import { scene, renderer, camera } from './SceneSetup.js';
 import Player from './Player.js';
-import GameLoader from './GameLoader.js';
 import Wall from './Wall.js';
+import GameStateManager from './GameStateManager.js';
 
 const canvas = document.querySelector('#gameCanvas');
 
 // Load the gameConfig init state
-let gameLoader;
+let gameStateManager;
 let player;
 async function initGame() {
   const response = await fetch('src/gameConfig.json');
   const config = await response.json();
 
-  gameLoader = new GameLoader(scene, true);
-  gameLoader.loadConfig(config);
+  gameStateManager = new GameStateManager(scene);
+  gameStateManager.loadConfig(config);
 
-  player = new Player(scene, canvas, camera, gameLoader.stateManager);
-  // ... rest of your game setup
+  player = new Player(scene, canvas, camera, gameStateManager);
 }
 
 await initGame();
 window.player = player;
-window.state = gameLoader.stateManager;
 window.Wall = Wall;
 
 const ambient = new THREE.AmbientLight(0xffffff, 2);
