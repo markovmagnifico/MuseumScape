@@ -32,20 +32,19 @@ export default class Player {
   }
 
   initPlayerModel() {
-    const playerGeometry = new THREE.CylinderGeometry(
-      0.5,
-      0.5,
-      this.playerHeight,
-      32
-    ); // Parameters for a cylinder
-    const playerMaterial = new THREE.MeshToonMaterial({ color: 0xff0000 }); // Red color
-    const player = new THREE.Mesh(playerGeometry, playerMaterial);
-
-    player.castShadow = true;
-    player.receiveShadow = true;
-    player.position.y = 2; // Position it on top of the grid
-    console.log(player.position);
-    this.scene.add(player);
+    // const playerGeometry = new THREE.CylinderGeometry(
+    //   0.5,
+    //   0.5,
+    //   this.playerHeight,
+    //   32
+    // ); // Parameters for a cylinder
+    // const playerMaterial = new THREE.MeshToonMaterial({ color: 0xff0000 }); // Red color
+    // const player = new THREE.Mesh(playerGeometry, playerMaterial);
+    // player.castShadow = true;
+    // player.receiveShadow = true;
+    // player.position.y = 2; // Position it on top of the grid
+    // console.log(player.position);
+    // this.scene.add(player);
   }
 
   initControls(canvas) {
@@ -127,15 +126,8 @@ export default class Player {
 
     // Apply gravity
     this.velocity.setY(this.velocity.y + gravity);
+    const originalY = this.position.y;
     this.position.y += this.velocity.y;
-
-    // Ground collision detection
-    // if (this.position.y <= 1) {
-    //   this.position.y = 1;
-    //   this.canJump = true; // Player can jump again
-    //   this.velocity.setY(0); // Reset vertical velocity
-    //   this.hasDoubleJumped = false; // Reset the double-jump state
-    // }
 
     const walls = this.stateManager.getEntities(Wall);
     let isOnSolidGround = false;
@@ -168,6 +160,7 @@ export default class Player {
 
     if (isOnSolidGround) {
       this.canJump = true;
+      this.position.y = originalY;
       this.velocity.setY(0); // Reset vertical velocity
       this.hasDoubleJumped = false; // Reset the double-jump state
     }

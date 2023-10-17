@@ -1,3 +1,4 @@
+import * as THREE from 'three';
 import Wall from './Wall';
 
 export default class Room {
@@ -21,7 +22,6 @@ export default class Room {
       height: this.height,
       depth,
     });
-    console.log('C wall for room');
     this.walls.push(wall);
   }
 
@@ -30,6 +30,21 @@ export default class Room {
   }
 
   createRoom() {
+    this.createWalls();
+    this.createLights();
+  }
+
+  createLights() {
+    const pointLight = new THREE.PointLight(
+      0xffffff,
+      4,
+      Math.max(this.dimensins) / 2
+    );
+    pointLight.position.set(this.center.x, this.height / 2, this.center.z);
+    this.scene.add(pointLight);
+  }
+
+  createWalls() {
     const halfWidth = this.dimensions.width / 2;
     const halfDepth = this.dimensions.depth / 2;
     const doorWidth = 2;
@@ -37,7 +52,6 @@ export default class Room {
     ['north', 'south', 'east', 'west'].forEach((wall) => {
       let door = this.hasDoorOnWall(wall);
       if (!door) {
-        console.log('Creating non-door walls');
         switch (wall) {
           case 'north':
             this.createWall(

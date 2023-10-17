@@ -1,7 +1,7 @@
 {
   "walls": [
-    { "x": 5, "z": 5, "width": 1, "height": 2, "depth": 1 },
-    { "x": -5, "z": -5, "width": 1, "height": 2, "depth": 1 },
+    { "x": 5, "z": 5, "width": 1, "height": 1.5, "depth": 1 },
+    { "x": -5, "z": -3, "width": 1, "height": 2, "depth": 1 },
     {
       "x": 0,
       "y": -0.5,
@@ -19,23 +19,32 @@
       "width": 12,
       "depth": 26,
       "doors": [
-        { "wall": "west", "position": 6 },
-        { "wall": "east", "position": -6 }
+        { "wall": "west", "position": -6 },
+        { "wall": "east", "position": 6 }
       ]
     },
     {
       "x": -12,
-      "z": 6,
+      "z": -6,
       "width": 12,
       "depth": 26,
       "doors": [{ "wall": "east", "position": 0 }]
     },
     {
       "x": 12,
-      "z": -6,
+      "z": 6,
       "width": 12,
-      "depth": 26,
+      "depth": 12,
       "doors": [{ "wall": "west", "position": 0 }]
+    }
+  ],
+  "paintings": [
+    {
+      "imagePath": "/assets/images/paintings/life.png",
+      "position": { "x": -17.74, "y": 1.6, "z": -4 },
+      "width": 2,
+      "height": 2,
+      "orientation": "west"
     }
   ],
   "spotlights": [
@@ -58,6 +67,16 @@
       "decay": 2,
       "position": { "x": 0, "y": 5, "z": 0 },
       "target": { "x": -3, "y": 0, "z": -3 }
+    },
+    {
+      "color": "#ffffff",
+      "intensity": 25,
+      "distance": 8,
+      "angle": 0.523599,
+      "penumbra": 0.5,
+      "decay": 2,
+      "position": { "x": -14.54, "y": 5, "z": -4 },
+      "target": { "x": -17.54, "y": 1.6, "z": -4 }
     }
   ],
   "items": [

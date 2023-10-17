@@ -14,10 +14,12 @@ export default class GameStateManager {
       config.spotlights,
       this.scene
     );
+    const paintings = this.loader.initPaintings(config.paintings, this.scene);
 
     this.addEntities(walls);
     this.addEntities(walls2);
     this.addEntities(spotlights);
+    this.addEntities(paintings);
   }
 
   addEntity(entity) {

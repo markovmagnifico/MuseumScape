@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import Wall from './Wall.js';
 import Room from './Room.js';
+import Painting from './Painting.js';
 
 export default class GameLoader {
   static spotlightDefaults = {
@@ -36,6 +37,22 @@ export default class GameLoader {
       walls.push(...room.getWalls());
     });
     return walls;
+  }
+
+  initPaintings(paintingData, scene) {
+    const paintings = [];
+    paintingData.forEach((data) => {
+      const painting = new Painting(
+        scene,
+        data.imagePath,
+        new THREE.Vector3(data.position.x, data.position.y, data.position.z),
+        data.width,
+        data.height,
+        data.orientation
+      );
+      paintings.push(painting);
+    });
+    return paintings;
   }
 
   initSpotlights(spotlightData, scene) {

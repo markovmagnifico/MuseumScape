@@ -3,6 +3,7 @@ import { scene, renderer, camera } from './SceneSetup.js';
 import Player from './Player.js';
 import Wall from './Wall.js';
 import GameStateManager from './GameStateManager.js';
+import Painting from './Painting.js';
 
 const canvas = document.querySelector('#gameCanvas');
 
@@ -34,20 +35,6 @@ scene.add(gridHelper);
 // XYZ Axes
 const axesHelper = new THREE.AxesHelper(5); // Size of the axes
 scene.add(axesHelper);
-
-// Temporary PointLight code
-const pointLight1 = new THREE.PointLight(0xffffff, 4, 20); // white color, intensity of 1
-pointLight1.position.set(0, 2.5, 6);
-scene.add(pointLight1);
-const pointLight2 = new THREE.PointLight(0xffffff, 4, 20); // white color, intensity of 1
-pointLight2.position.set(0, 2.5, -6);
-scene.add(pointLight2);
-const pointLight3 = new THREE.PointLight(0xffffff, 4, 20); // white color, intensity of 1
-pointLight3.position.set(-12, 2.5, 6);
-scene.add(pointLight3);
-const pointLight4 = new THREE.PointLight(0xffffff, 4, 20); // white color, intensity of 1
-pointLight4.position.set(12, 2.5, -6);
-scene.add(pointLight4);
 
 function animate() {
   requestAnimationFrame(animate);

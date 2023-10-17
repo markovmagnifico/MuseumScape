@@ -25,4 +25,16 @@ camera.position.z = 10;
 camera.lookAt(0, 0, 0); // Makes the camera look at the origin
 window.camera = camera;
 
+// Window resizing
+function onWindowResize() {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+
+  renderer.setSize(width, height);
+}
+window.addEventListener('resize', onWindowResize);
+
 export { scene, renderer, camera };
