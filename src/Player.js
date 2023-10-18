@@ -13,13 +13,14 @@ export default class Player {
 
     // Player constants
     this.playerHeight = 2;
-    this.playerRadius = 0.5;
-    this.speed = 0.1;
+    this.playerRadius = 0.7;
+    this.speed = 0.08;
     this.jumpForce = 0.15;
     this.airDashForce = 0.2;
 
     // State variables
-    this.position = new THREE.Vector3(0, 1, 0);
+    // this.position = new THREE.Vector3(15, 0.71, 11);
+    this.position = new THREE.Vector3(-11, 0.71, -7);
     this.velocity = new THREE.Vector3(0, 0, 0);
     this.canJump = true;
     this.canDoubleJump = true;
@@ -156,6 +157,7 @@ export default class Player {
 
     const walls = this.stateManager.getEntities(Wall);
     let isOnSolidGround = false;
+    let isTouchingCeiling = false;
     for (let wall of walls) {
       if (this.boundingSphere.intersectsBox(wall.boundingBox)) {
         // Collision detected
@@ -180,7 +182,18 @@ export default class Player {
         if (this.position.y > wall.boundingBox.max.y && this.velocity.y <= 0) {
           isOnSolidGround = true;
         }
+
+        if (
+          this.position.y + this.playerHeight > wall.boundingBox.max.y &&
+          this.velocity.y > 0
+        ) {
+          isTouchingCeiling = true;
+        }
       }
+    }
+
+    if (isTouchingCeiling) {
+      this.velocity.setY(0);
     }
 
     if (isOnSolidGround) {

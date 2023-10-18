@@ -18,7 +18,7 @@ export default class GameStateManager {
 
     this.addEntities(floors);
     this.addEntities(walls);
-    this.addEntities(spotlights);
+    // this.addEntities(spotlights);
     this.addEntities(paintings);
   }
 

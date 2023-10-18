@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import Wall from './Wall.js';
 import Room from './Room.js';
 import Painting from './Painting.js';
+import createSpotlight from './Spotlight.js';
 
 export default class GameLoader {
   static spotlightDefaults = {
@@ -46,10 +47,13 @@ export default class GameLoader {
       const painting = new Painting(
         scene,
         data.imagePath,
+        data.framePath,
         new THREE.Vector3(data.position.x, data.position.y, data.position.z),
         data.width,
         data.height,
-        data.orientation
+        data.orientation,
+        data.showSpotlight,
+        data.spotlightProps
       );
       paintings.push(painting);
     });
@@ -57,37 +61,26 @@ export default class GameLoader {
   }
 
   initSpotlights(spotlightData, scene) {
+    /*
+    {
+      "color": "#ffffff",
+      "intensity": 25,
+      "distance": 8,
+      "angle": 0.523599,
+      "penumbra": 0.5,
+      "decay": 2,
+      "position": { "x": -14.54, "y": 4.5, "z": -4 },
+      "target": { "x": -17.54, "y": 1.6, "z": -4 }
+    }
+    */
     const spotlights = [];
     spotlightData.forEach((data) => {
       const spotlightProps = { ...GameLoader.spotlightDefaults, ...data };
-      const spotlight = new THREE.SpotLight(
-        spotlightProps.color,
-        spotlightProps.intensity,
-        spotlightProps.distance,
-        spotlightProps.angle,
-        spotlightProps.penumbra,
-        spotlightProps.decay
-      );
-      spotlight.position.set(
-        spotlightProps.position.x,
-        spotlightProps.position.y,
-        spotlightProps.position.z
-      );
-      spotlight.target.position.set(
-        spotlightProps.target.x,
-        spotlightProps.target.y,
-        spotlightProps.target.z
-      );
-      spotlight.castShadow = true;
-
-      // Some optional stuff to tweak
-      // spotlight.shadow.mapSize.width = 1024; // Default is 512, increase for better shadow resolution
-      // spotlight.shadow.mapSize.height = 1024; // Default is 512, increase for better shadow resolution
-      // spotlight.shadow.bias = 0.0001; // You might need to adjust this value if you notice shadow artifacts
-
+      const spotlight = createSpotlight(spotlightProps);
       scene.add(spotlight);
       scene.add(spotlight.target);
       spotlights.push(spotlight);
+
       if (this.debug) {
         const lightHelper = new THREE.SpotLightHelper(spotlight);
         scene.add(lightHelper);

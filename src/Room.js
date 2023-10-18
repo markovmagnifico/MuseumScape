@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import Wall from './Wall';
+import createSpotlight from './Spotlight';
 
 export default class Room {
   constructor(scene, { x, z, width, depth, height = 5, doors = [] }) {
@@ -38,12 +39,37 @@ export default class Room {
   createLights() {
     const pointLight = new THREE.PointLight(
       0xffffff,
-      4,
+      8,
       Math.max(this.dimensins) / 2
     );
     pointLight.position.set(this.center.x, this.height / 2, this.center.z);
     this.scene.add(pointLight);
   }
+  // createLights() {
+  //   const spotlightProps = {
+  //     color: '#ffffff',
+  //     intensity: 16,
+  //     distance: Math.max(this.dimensions) / 2,
+  //     angle: 2, // Wide angle
+  //     penumbra: 0.5,
+  //     decay: 2,
+  //     position: {
+  //       x: this.center.x,
+  //       y: this.height / 2,
+  //       z: this.center.z,
+  //     },
+  //     target: { x: this.center.x, y: 0, z: this.center.z },
+  //   };
+
+  //   const spotlight = createSpotlight(spotlightProps);
+  //   this.scene.add(spotlight);
+  //   this.scene.add(spotlight.target);
+
+  //   if (this.debug) {
+  //     const lightHelper = new THREE.SpotLightHelper(spotlight);
+  //     this.scene.add(lightHelper);
+  //   }
+  // }
 
   createWalls() {
     const halfWidth = this.dimensions.width / 2;
@@ -54,7 +80,7 @@ export default class Room {
       let door = this.hasDoorOnWall(wall);
       if (!door) {
         switch (wall) {
-          case 'north':
+          case 'south':
             this.createWall(
               this.center.x,
               this.center.z + halfDepth,
@@ -63,7 +89,7 @@ export default class Room {
               'wallNS'
             );
             break;
-          case 'south':
+          case 'north':
             this.createWall(
               this.center.x,
               this.center.z - halfDepth,
@@ -94,7 +120,7 @@ export default class Room {
       } else {
         let doorStart, doorEnd;
         switch (wall) {
-          case 'north':
+          case 'south':
             doorStart = this.center.x - doorWidth / 2 + door.position;
             doorEnd = this.center.x + doorWidth / 2 + door.position;
 
@@ -117,7 +143,7 @@ export default class Room {
             );
             break;
 
-          case 'south':
+          case 'north':
             doorStart = this.center.x - doorWidth / 2 + door.position;
             doorEnd = this.center.x + doorWidth / 2 + door.position;
 
