@@ -16,12 +16,15 @@ export default class Player {
     this.playerRadius = 0.5;
     this.speed = 0.1;
     this.jumpForce = 0.15; // Upward force applied when jumping
+    this.airDashForce = 0.2;
 
     // State variables
     this.position = new THREE.Vector3(0, 1, 0);
     this.velocity = new THREE.Vector3(0, 0, 0);
     this.canJump = true;
-    this.hasDoubleJumped = false;
+    this.canDoubleJump = true;
+    this.canAirDash = true;
+    this.isAirDashing = false;
 
     // Initialize geometry, material, mesh, etc.
     this.initPlayerModel();
@@ -71,12 +74,21 @@ export default class Player {
           if (this.canJump) {
             this.velocity.setY(this.velocity.y + this.jumpForce);
             this.canJump = false;
-          } else if (!this.hasDoubleJumped) {
+          } else if (this.canDoubleJump) {
             this.velocity.setY(
               Math.max(this.velocity.y + this.jumpForce, this.jumpForce)
             );
-            this.hasDoubleJumped = true;
+            this.canDoubleJump = false;
           }
+        }
+        if (
+          event.code === 'ShiftLeft' &&
+          !this.canJump &&
+          this.canAirDash &&
+          !this.isAirDashing
+        ) {
+          this.isAirDashing = true;
+          this.canAirDash = false;
         }
         break;
       case 'keyup':
@@ -127,7 +139,20 @@ export default class Player {
     // Apply gravity
     this.velocity.setY(this.velocity.y + gravity);
     const originalY = this.position.y;
-    this.position.y += this.velocity.y;
+
+    // Do air-dash
+    if (this.isAirDashing) {
+      this.controls.getDirection(viewDirection);
+      viewDirection.y = 0; // Make sure we only move horizontally
+      this.velocity.add(
+        viewDirection.normalize().multiplyScalar(this.airDashForce)
+      );
+
+      this.isAirDashing = false; // Reset air-dash state
+    }
+
+    // Final position update before collision handling
+    this.position.add(this.velocity);
 
     const walls = this.stateManager.getEntities(Wall);
     let isOnSolidGround = false;
@@ -161,8 +186,12 @@ export default class Player {
     if (isOnSolidGround) {
       this.canJump = true;
       this.position.y = originalY;
-      this.velocity.setY(0); // Reset vertical velocity
-      this.hasDoubleJumped = false; // Reset the double-jump state
+      this.velocity.setX(0);
+      this.velocity.setY(0);
+      this.velocity.setZ(0);
+      this.canDoubleJump = true; // Reset the double-jump state
+      this.canAirDash = true;
+      this.isAirDashing = false;
     }
 
     this.boundingSphere.set(this.position, this.playerRadius);
