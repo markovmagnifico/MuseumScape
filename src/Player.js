@@ -15,7 +15,7 @@ export default class Player {
     this.playerHeight = 2;
     this.playerRadius = 0.5;
     this.speed = 0.1;
-    this.jumpForce = 0.15; // Upward force applied when jumping
+    this.jumpForce = 0.15;
     this.airDashForce = 0.2;
 
     // State variables
@@ -26,7 +26,7 @@ export default class Player {
     this.canAirDash = true;
     this.isAirDashing = false;
 
-    // Initialize geometry, material, mesh, etc.
+    // Initialize geometry, controls, event handling, etc
     this.initPlayerModel();
     this.initControls(canvas);
     this.initEventListeners();

@@ -13,7 +13,7 @@ export default class Room {
     this.createRoom();
   }
 
-  createWall(x, z, width, depth) {
+  createWall(x, z, width, depth, wallType) {
     const wall = new Wall(this.scene, {
       x,
       y: this.height / 2,
@@ -21,6 +21,7 @@ export default class Room {
       width,
       height: this.height,
       depth,
+      wallType,
     });
     this.walls.push(wall);
   }
@@ -58,7 +59,8 @@ export default class Room {
               this.center.x,
               this.center.z + halfDepth,
               this.dimensions.width,
-              0.5
+              0.5,
+              'wallNS'
             );
             break;
           case 'south':
@@ -66,7 +68,8 @@ export default class Room {
               this.center.x,
               this.center.z - halfDepth,
               this.dimensions.width,
-              0.5
+              0.5,
+              'wallNS'
             );
             break;
           case 'east':
@@ -74,7 +77,8 @@ export default class Room {
               this.center.x + halfWidth,
               this.center.z,
               0.5,
-              this.dimensions.depth
+              this.dimensions.depth,
+              'wallEW'
             );
             break;
           case 'west':
@@ -82,7 +86,8 @@ export default class Room {
               this.center.x - halfWidth,
               this.center.z,
               0.5,
-              this.dimensions.depth
+              this.dimensions.depth,
+              'wallEW'
             );
             break;
         }
@@ -99,14 +104,16 @@ export default class Room {
                 (doorStart - this.center.x + halfWidth) / 2,
               this.center.z + halfDepth,
               doorStart - this.center.x + halfWidth,
-              0.5
+              0.5,
+              'wallNS'
             );
 
             this.createWall(
               doorEnd + (this.center.x + halfWidth - doorEnd) / 2,
               this.center.z + halfDepth,
               this.center.x + halfWidth - doorEnd,
-              0.5
+              0.5,
+              'wallNS'
             );
             break;
 
@@ -120,14 +127,16 @@ export default class Room {
                 (doorStart - this.center.x + halfWidth) / 2,
               this.center.z - halfDepth,
               doorStart - this.center.x + halfWidth,
-              0.5
+              0.5,
+              'wallNS'
             );
 
             this.createWall(
               doorEnd + (this.center.x + halfWidth - doorEnd) / 2,
               this.center.z - halfDepth,
               this.center.x + halfWidth - doorEnd,
-              0.5
+              0.5,
+              'wallNS'
             );
             break;
 
@@ -141,14 +150,16 @@ export default class Room {
                 halfDepth +
                 (doorStart - this.center.z + halfDepth) / 2,
               0.5,
-              doorStart - this.center.z + halfDepth
+              doorStart - this.center.z + halfDepth,
+              'wallEW'
             );
 
             this.createWall(
               this.center.x + halfWidth,
               doorEnd + (this.center.z + halfDepth - doorEnd) / 2,
               0.5,
-              this.center.z + halfDepth - doorEnd
+              this.center.z + halfDepth - doorEnd,
+              'wallEW'
             );
             break;
 
@@ -162,14 +173,16 @@ export default class Room {
                 halfDepth +
                 (doorStart - this.center.z + halfDepth) / 2,
               0.5,
-              doorStart - this.center.z + halfDepth
+              doorStart - this.center.z + halfDepth,
+              'wallEW'
             );
 
             this.createWall(
               this.center.x - halfWidth,
               doorEnd + (this.center.z + halfDepth - doorEnd) / 2,
               0.5,
-              this.center.z + halfDepth - doorEnd
+              this.center.z + halfDepth - doorEnd,
+              'wallEW'
             );
             break;
         }

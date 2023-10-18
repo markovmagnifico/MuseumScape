@@ -19,13 +19,14 @@ export default class GameLoader {
     this.debug = debug !== undefined ? debug : false;
   }
 
-  initWalls(wallData, scene) {
-    const walls = [];
-    wallData.forEach((data) => {
-      const wall = new Wall(scene, data);
-      walls.push(wall);
+  initFloors(floorData, scene) {
+    const floors = [];
+    floorData.forEach((data) => {
+      data.wallType = 'floor';
+      const floor = new Wall(scene, data);
+      floors.push(floor);
     });
-    return walls;
+    return floors;
   }
 
   initRooms(roomData, scene) {

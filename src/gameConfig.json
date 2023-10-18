@@ -1,5 +1,5 @@
 {
-  "walls": [
+  "floors": [
     { "x": 5, "z": 5, "width": 1, "height": 1.5, "depth": 1 },
     { "x": -5, "z": -3, "width": 1, "height": 2, "depth": 1 },
     {
@@ -9,7 +9,8 @@
       "width": 50,
       "height": 1,
       "depth": 50,
-      "color": "#fff5e1"
+      "color": "#fff5e1",
+      "texturePath": "/assets/images/textures/wood_floor6.jpg"
     }
   ],
   "rooms": [
@@ -24,15 +25,18 @@
       ]
     },
     {
-      "x": -12,
-      "z": -6,
+      "x": -12.01,
+      "z": -6.01,
       "width": 12,
       "depth": 26,
-      "doors": [{ "wall": "east", "position": 0 }]
+      "doors": [
+        { "wall": "east", "position": 0 },
+        { "wall": "south", "position": 0 }
+      ]
     },
     {
-      "x": 12,
-      "z": 6,
+      "x": 12.01,
+      "z": 6.01,
       "width": 12,
       "depth": 12,
       "doors": [{ "wall": "west", "position": 0 }]

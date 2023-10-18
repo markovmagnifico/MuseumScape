@@ -27,14 +27,14 @@ window.Wall = Wall;
 // const ambient = new THREE.AmbientLight(0xffffff, 2);
 // scene.add(ambient);
 
-// Grid Floor
-const size = 50; // Size of the grid
-const divisions = 50; // Number of divisions on the grid
-const gridHelper = new THREE.GridHelper(size, divisions);
-scene.add(gridHelper);
-// XYZ Axes
-const axesHelper = new THREE.AxesHelper(5); // Size of the axes
-scene.add(axesHelper);
+// // Grid Floor
+// const size = 50; // Size of the grid
+// const divisions = 50; // Number of divisions on the grid
+// const gridHelper = new THREE.GridHelper(size, divisions);
+// scene.add(gridHelper);
+// // XYZ Axes
+// const axesHelper = new THREE.AxesHelper(5); // Size of the axes
+// scene.add(axesHelper);
 
 function animate() {
   requestAnimationFrame(animate);

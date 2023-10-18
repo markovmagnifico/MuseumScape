@@ -4,20 +4,20 @@ export default class GameStateManager {
   constructor(scene) {
     this.scene = scene;
     this.entities = {};
-    this.loader = new GameLoader(true);
+    this.loader = new GameLoader(false);
   }
 
   loadConfig(config) {
-    const walls = this.loader.initWalls(config.walls, this.scene);
-    const walls2 = this.loader.initRooms(config.rooms, this.scene);
+    const floors = this.loader.initFloors(config.floors, this.scene);
+    const walls = this.loader.initRooms(config.rooms, this.scene);
     const spotlights = this.loader.initSpotlights(
       config.spotlights,
       this.scene
     );
     const paintings = this.loader.initPaintings(config.paintings, this.scene);
 
+    this.addEntities(floors);
     this.addEntities(walls);
-    this.addEntities(walls2);
     this.addEntities(spotlights);
     this.addEntities(paintings);
   }
