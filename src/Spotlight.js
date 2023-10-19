@@ -1,11 +1,27 @@
 import * as THREE from 'three';
+import { DEBUG } from './Constants';
 
 export default class DynamicSpotlight {
-  constructor(scene, spotlightProps, debug = false) {
+  constructor(scene, spotlightProps) {
     this.scene = scene;
     this.spotlightProps = spotlightProps;
-    this.debug = debug;
 
+    this.createBoundingBox(spotlightProps);
+    this.createSpotlight(spotlightProps);
+    this.isSpotlightAdded = false;
+  }
+
+  update(player) {
+    const isInside = this.boundingBox.intersectsSphere(player.boundingSphere);
+
+    if (isInside && !this.isSpotlightAdded) {
+      this.addSpotlight();
+    } else if (!isInside && this.isSpotlightAdded) {
+      this.removeSpotlight();
+    }
+  }
+
+  createBoundingBox(spotlightProps) {
     // Calculate bounding box position based on spotlight position
     const halfHeight = 2;
     this.boundingBox = new THREE.Box3(
@@ -21,7 +37,7 @@ export default class DynamicSpotlight {
       )
     );
 
-    if (this.debug) {
+    if (DEBUG) {
       const boxGeometry = new THREE.BoxGeometry(3, 4, 3);
       const boxMaterial = new THREE.MeshBasicMaterial({
         wireframe: true,
@@ -35,46 +51,37 @@ export default class DynamicSpotlight {
       );
       this.scene.add(this.debugBox);
     }
-
-    this.isSpotlightAdded = false;
   }
 
-  update(player) {
-    const isInside = this.boundingBox.intersectsSphere(player.boundingSphere);
-
-    if (isInside && !this.isSpotlightAdded) {
-      this.addSpotlight();
-    } else if (!isInside && this.isSpotlightAdded) {
-      this.removeSpotlight();
-    }
-  }
-
-  addSpotlight() {
+  createSpotlight(spotlightProps) {
     const spotlight = new THREE.SpotLight(
-      this.spotlightProps.color,
-      this.spotlightProps.intensity,
-      this.spotlightProps.distance,
-      this.spotlightProps.angle,
-      this.spotlightProps.penumbra,
-      this.spotlightProps.decay
+      spotlightProps.color,
+      spotlightProps.intensity,
+      spotlightProps.distance,
+      spotlightProps.angle,
+      spotlightProps.penumbra,
+      spotlightProps.decay
     );
     spotlight.position.set(
-      this.spotlightProps.position.x,
-      this.spotlightProps.position.y,
-      this.spotlightProps.position.z
+      spotlightProps.position.x,
+      spotlightProps.position.y,
+      spotlightProps.position.z
     );
     spotlight.target.position.set(
-      this.spotlightProps.target.x,
-      this.spotlightProps.target.y,
-      this.spotlightProps.target.z
+      spotlightProps.target.x,
+      spotlightProps.target.y,
+      spotlightProps.target.z
     );
     spotlight.castShadow = true;
 
     this.spotlight = spotlight;
+    this.lightHelper = new THREE.SpotLightHelper(this.spotlight);
+  }
+
+  addSpotlight() {
     this.scene.add(this.spotlight);
 
-    if (this.debug) {
-      this.lightHelper = new THREE.SpotLightHelper(spotlight);
+    if (DEBUG) {
       this.scene.add(this.lightHelper);
     }
 
@@ -84,7 +91,7 @@ export default class DynamicSpotlight {
   removeSpotlight() {
     this.scene.remove(this.spotlight);
 
-    if (this.debug && this.lightHelper) {
+    if (DEBUG && this.lightHelper) {
       this.scene.remove(this.lightHelper);
     }
 

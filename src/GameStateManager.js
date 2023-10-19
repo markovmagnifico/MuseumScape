@@ -1,4 +1,5 @@
 import GameLoader from './GameLoader';
+import DynamicSpotlight from './Spotlight';
 
 export default class GameStateManager {
   constructor(scene) {
@@ -6,27 +7,25 @@ export default class GameStateManager {
     this.entities = {};
     this.loader = new GameLoader(false);
 
-    this.state = {
-      walls: [],
-      rooms: [],
-      lights: [],
-      paintings: [],
-    };
+    // this.state = {
+    //   walls: [],
+    //   rooms: [],
+    //   lights: [],
+    //   paintings: [],
+    // };
   }
 
   loadConfig(config) {
     const floors = this.loader.initFloors(config.floors, this.scene);
-    const walls = this.loader.initRooms(config.rooms, this.scene);
-    // const spotlights = this.loader.initSpotlights(
-    //   config.spotlights,
-    //   this.scene
-    // );
-    // const paintings = this.loader.initPaintings(config.paintings, this.scene);
+    const rooms = this.loader.initRooms(config.rooms, this.scene);
 
     this.addEntities(floors);
-    this.addEntities(walls);
-    // this.addEntities(spotlights);
-    // this.addEntities(paintings);
+    rooms.forEach((room) => {
+      this.addEntity(room);
+      this.addEntities(room.walls);
+      this.addEntities(room.paintings);
+      this.addEntities(room.spotlights);
+    });
   }
 
   addEntity(entity) {
@@ -49,5 +48,12 @@ export default class GameStateManager {
 
   getEntities(classType) {
     return this.entities[classType.name] || [];
+  }
+
+  updateLights(player) {
+    const lights = this.getEntities(DynamicSpotlight);
+    lights.forEach((light) => {
+      light.update(player);
+    });
   }
 }

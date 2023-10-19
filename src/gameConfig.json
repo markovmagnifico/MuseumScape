@@ -62,6 +62,12 @@
           "height": 2.5
         }
       ],
+      "spotlights": [
+        { "wall": "east", "angle": 0.7 },
+        { "wall": "east", "targetY": 1.9, "offset": 8 },
+        { "wall": "north", "targetY": 2.4, "angle": 0.9 },
+        { "wall": "west", "angle": 0.7 }
+      ],
       "ceiling": {
         "exists": false,
         "texturePath": "todo"
@@ -169,6 +175,16 @@
           "width": 0.7,
           "height": 0.7
         }
+      ],
+      "spotlights": [
+        { "wall": "east" },
+        { "wall": "east", "offset": 6 },
+        { "wall": "east", "offset": -6 },
+        { "wall": "north", "targetY": 2.4, "angle": 0.9 },
+        { "wall": "west", "offset": 6, "targetY": 2.2, "angle": 0.7 },
+        { "wall": "west", "offset": -6, "targetY": 2.2, "angle": 0.7 },
+        { "wall": "south", "offset": 3.35 },
+        { "wall": "south", "offset": -3.35 }
       ]
     },
     {

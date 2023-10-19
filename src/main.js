@@ -3,7 +3,6 @@ import { scene, renderer, camera } from './SceneSetup.js';
 import Player from './Player.js';
 import Wall from './Wall.js';
 import GameStateManager from './GameStateManager.js';
-import DynamicSpotlight from './Spotlight.js';
 
 const canvas = document.querySelector('#gameCanvas');
 
@@ -22,6 +21,7 @@ async function initGame() {
 
 await initGame();
 window.player = player;
+window.gameStateManager = gameStateManager;
 window.Wall = Wall;
 
 // const ambient = new THREE.AmbientLight(0xffffff, 2);
@@ -39,6 +39,7 @@ window.Wall = Wall;
 function animate() {
   requestAnimationFrame(animate);
   player.update();
+  gameStateManager.updateLights(player);
   renderer.render(scene, camera);
 }
 animate();

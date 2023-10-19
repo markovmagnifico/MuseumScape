@@ -15,9 +15,7 @@ export default class GameLoader {
     target: { x: 0, y: 0, z: 0 },
   };
 
-  constructor(debug) {
-    this.debug = debug !== undefined ? debug : false;
-  }
+  constructor() {}
 
   initFloors(floorData, scene) {
     const floors = [];
@@ -31,13 +29,11 @@ export default class GameLoader {
 
   initRooms(roomData, scene) {
     const rooms = [];
-    const walls = [];
     roomData.forEach((data) => {
       const room = new Room(scene, data);
       rooms.push(room);
-      walls.push(...room.getWalls());
     });
-    return walls;
+    return rooms;
   }
 
   initPaintings(paintingData, scene) {

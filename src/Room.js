@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import Wall from './Wall';
 import Painting from './Painting';
+import DynamicSpotlight from './Spotlight';
 
 export default class Room {
   constructor(
@@ -13,6 +14,7 @@ export default class Room {
       height = 5,
       doors = [],
       paintings = [],
+      spotlights = [],
       ceiling = {
         exists: true,
         texturePath: '/assets/images/textures/wood_light.jpg',
@@ -32,6 +34,7 @@ export default class Room {
     // Arrays for tracking room assets
     this.walls = [];
     this.paintings = [];
+    this.spotlights = [];
 
     // Room creation
     this.createWalls();
@@ -40,6 +43,72 @@ export default class Room {
       this.createCeiling(ceiling.texturePath);
     }
     this.createPaintings(paintings);
+    this.createSpotlights(spotlights);
+  }
+
+  createSpotlights(spotlights) {
+    spotlights.forEach((spotlightData) => {
+      const {
+        wall,
+        offset = 0,
+        color = 0xffffff,
+        intensity = 20,
+        distance = 8,
+        angle = 0.5,
+        penumbra = 0.5,
+        targetY = 1.6,
+        spotlightY = 3.9,
+      } = spotlightData;
+      let position = { x: this.center.x, y: spotlightY, z: this.center.z };
+      let targetPosition = { x: this.center.x, y: targetY, z: this.center.z };
+
+      // Distance light is away from wall
+      const wallDist = 3;
+
+      switch (wall) {
+        case 'north':
+          position.z = this.center.z + this.dimensions.depth / 2 - wallDist;
+          position.x += offset;
+          targetPosition.z = this.center.z + this.dimensions.depth / 2;
+          targetPosition.x += offset;
+          break;
+        case 'south':
+          position.z = this.center.z - this.dimensions.depth / 2 + wallDist;
+          position.x += offset;
+          targetPosition.z = this.center.z - this.dimensions.depth / 2;
+          targetPosition.x += offset;
+          break;
+        case 'east':
+          position.x = this.center.x - this.dimensions.width / 2 + wallDist;
+          position.z += offset;
+          targetPosition.x = this.center.x - this.dimensions.width / 2;
+          targetPosition.z += offset;
+          break;
+        case 'west':
+          position.x = this.center.x + this.dimensions.width / 2 - wallDist;
+          position.z += offset;
+          targetPosition.x = this.center.x + this.dimensions.width / 2;
+          targetPosition.z += offset;
+          break;
+      }
+
+      const spotlightProps = {
+        color,
+        intensity,
+        distance,
+        angle,
+        penumbra,
+        position,
+        target: targetPosition,
+      };
+
+      const dynamicSpotlight = new DynamicSpotlight(
+        this.scene,
+        spotlightProps,
+        true
+      );
+      this.spotlights.push(dynamicSpotlight);
+    });
   }
 
   createPaintings(paintings) {
@@ -97,7 +166,6 @@ export default class Room {
         height,
         orientation
       );
-
       this.paintings.push(painting);
     });
   }
@@ -143,11 +211,7 @@ export default class Room {
   }
 
   createLights() {
-    const pointLight = new THREE.PointLight(
-      0xffffff,
-      26,
-      Math.max(this.dimensins) / 2
-    );
+    const pointLight = new THREE.PointLight(0xffffff, 1, 0, 1.5);
     pointLight.position.set(this.center.x, this.height / 2, this.center.z);
     this.scene.add(pointLight);
   }
