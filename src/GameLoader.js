@@ -2,7 +2,6 @@ import * as THREE from 'three';
 import Wall from './Wall.js';
 import Room from './Room.js';
 import Painting from './Painting.js';
-import createSpotlight from './Spotlight.js';
 
 export default class GameLoader {
   static spotlightDefaults = {
@@ -58,34 +57,5 @@ export default class GameLoader {
       paintings.push(painting);
     });
     return paintings;
-  }
-
-  initSpotlights(spotlightData, scene) {
-    /*
-    {
-      "color": "#ffffff",
-      "intensity": 25,
-      "distance": 8,
-      "angle": 0.523599,
-      "penumbra": 0.5,
-      "decay": 2,
-      "position": { "x": -14.54, "y": 4.5, "z": -4 },
-      "target": { "x": -17.54, "y": 1.6, "z": -4 }
-    }
-    */
-    const spotlights = [];
-    spotlightData.forEach((data) => {
-      const spotlightProps = { ...GameLoader.spotlightDefaults, ...data };
-      const spotlight = createSpotlight(spotlightProps);
-      scene.add(spotlight);
-      scene.add(spotlight.target);
-      spotlights.push(spotlight);
-
-      if (this.debug) {
-        const lightHelper = new THREE.SpotLightHelper(spotlight);
-        scene.add(lightHelper);
-      }
-    });
-    return spotlights;
   }
 }

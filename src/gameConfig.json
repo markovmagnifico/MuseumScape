@@ -11,20 +11,11 @@
       "depth": 100,
       "color": "#fff5e1",
       "texturePath": "/assets/images/textures/wood_floor6.jpg"
-    },
-    {
-      "x": -55.5,
-      "y": 5,
-      "z": 0,
-      "width": 100,
-      "height": 0.5,
-      "depth": 50,
-      "color": "#fff5e1",
-      "texturePath": "/assets/images/textures/wood_floor2.jpg"
     }
   ],
   "rooms": [
     {
+      "name": "Lobby (floor 1)",
       "x": 0,
       "z": 0,
       "width": 12,
@@ -32,9 +23,52 @@
       "doors": [
         { "wall": "west", "position": -6 },
         { "wall": "east", "position": 6 }
-      ]
+      ],
+      "paintings": [
+        {
+          "imagePath": "/assets/images/paintings/lobby_floor1/dadaist_collage.png",
+          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "wall": "east",
+          "offset": 0,
+          "width": 2.5,
+          "height": 2.5,
+          "yRelative": 1.8
+        },
+        {
+          "imagePath": "/assets/images/paintings/lobby_floor1/forest_masks.png",
+          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "wall": "east",
+          "offset": 8,
+          "width": 2,
+          "height": 2,
+          "yRelative": 1.8
+        },
+        {
+          "imagePath": "/assets/images/paintings/lobby_floor1/geometry.png",
+          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "wall": "north",
+          "offset": 0,
+          "yRelative": 2.3,
+          "width": 3.5,
+          "height": 3.5
+        },
+        {
+          "imagePath": "/assets/images/paintings/lobby_floor1/opart_swirl.png",
+          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "wall": "west",
+          "offset": 0,
+          "yRelative": 1.8,
+          "width": 2.5,
+          "height": 2.5
+        }
+      ],
+      "ceiling": {
+        "exists": false,
+        "texturePath": "todo"
+      }
     },
     {
+      "name": "Exhibit 1",
       "x": -12.01,
       "z": -6.01,
       "width": 12,
@@ -42,6 +76,99 @@
       "doors": [
         { "wall": "east", "position": 0 },
         { "wall": "north", "position": 0 }
+      ],
+      "paintings": [
+        {
+          "imagePath": "/assets/images/paintings/exhibit1/serene.png",
+          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "wall": "east",
+          "offset": 0,
+          "yRelative": 1.6,
+          "width": 2,
+          "height": 2
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit1/fishing.png",
+          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "wall": "east",
+          "offset": -6,
+          "yRelative": 1.6,
+          "width": 2,
+          "height": 2
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit1/moon_festival.png",
+          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "wall": "east",
+          "offset": 6,
+          "yRelative": 1.6,
+          "width": 2,
+          "height": 2
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit1/phone.png",
+          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "wall": "west",
+          "offset": 6,
+          "yRelative": 1.8,
+          "position": { "x": -6.28, "y": 1.8, "z": 1 },
+          "width": 2.5,
+          "height": 2.5
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit1/lounging.png",
+          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "wall": "west",
+          "offset": -6,
+          "yRelative": 1.8,
+          "width": 2.5,
+          "height": 2.5
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit1/mountain.png",
+          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "wall": "north",
+          "offset": 0,
+          "yRelative": 2.3,
+          "width": 3.5,
+          "height": 3.5
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit1/frontier.png",
+          "framePath": "/assets/images/textures/wood_med.jpg",
+          "wall": "south",
+          "offset": -2.5,
+          "yRelative": 1.4,
+          "width": 0.7,
+          "height": 0.7
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit1/deer.png",
+          "framePath": "/assets/images/textures/wood_med.jpg",
+          "wall": "south",
+          "offset": -4.2,
+          "yRelative": 1.4,
+          "width": 0.7,
+          "height": 0.7
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit1/stump.png",
+          "framePath": "/assets/images/textures/wood_med.jpg",
+          "wall": "south",
+          "offset": 2.5,
+          "yRelative": 1.4,
+          "width": 0.7,
+          "height": 0.7
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit1/alley.png",
+          "framePath": "/assets/images/textures/wood_med.jpg",
+          "wall": "south",
+          "offset": 4.2,
+          "yRelative": 1.4,
+          "width": 0.7,
+          "height": 0.7
+        }
       ]
     },
     {
@@ -59,143 +186,7 @@
       "doors": [{ "wall": "south", "position": -6 }]
     }
   ],
-  "paintings": [
-    {
-      "imagePath": "/assets/images/paintings/lobby_floor1/dadaist_collage.png",
-      "framePath": "/assets/images/textures/wood_light2.jpg",
-      "position": { "x": -5.7, "y": 1.8, "z": 0 },
-      "width": 2.5,
-      "height": 2.5,
-      "orientation": "west"
-    },
-    {
-      "imagePath": "/assets/images/paintings/lobby_floor1/forest_masks.png",
-      "framePath": "/assets/images/textures/wood_light2.jpg",
-      "position": { "x": -5.7, "y": 1.8, "z": 8 },
-      "width": 2,
-      "height": 2,
-      "orientation": "west"
-    },
-    {
-      "imagePath": "/assets/images/paintings/lobby_floor1/geometry.png",
-      "framePath": "/assets/images/textures/wood_light2.jpg",
-      "position": { "x": 0, "y": 2.3, "z": 12.7 },
-      "width": 3.5,
-      "height": 3.5,
-      "orientation": "south",
-      "spotlightProps": {
-        "distance": 8,
-        "angle": 2
-      }
-    },
-    {
-      "imagePath": "/assets/images/paintings/lobby_floor1/opart_swirl.png",
-      "framePath": "/assets/images/textures/wood_light2.jpg",
-      "position": { "x": 5.7, "y": 1.8, "z": -2 },
-      "width": 2.5,
-      "height": 2.5,
-      "orientation": "east"
-    },
-    {
-      "imagePath": "/assets/images/paintings/exhibit1/serene.png",
-      "framePath": "/assets/images/textures/wood_light2.jpg",
-      "position": { "x": -17.74, "y": 1.6, "z": -6 },
-      "width": 2,
-      "height": 2,
-      "orientation": "west"
-    },
-    {
-      "imagePath": "/assets/images/paintings/exhibit1/fishing.png",
-      "framePath": "/assets/images/textures/wood_light2.jpg",
-      "position": { "x": -17.74, "y": 1.6, "z": -13 },
-      "width": 2,
-      "height": 2,
-      "orientation": "west"
-    },
-    {
-      "imagePath": "/assets/images/paintings/exhibit1/moon_festival.png",
-      "framePath": "/assets/images/textures/wood_light2.jpg",
-      "position": { "x": -17.74, "y": 1.6, "z": 1 },
-      "width": 2,
-      "height": 2,
-      "orientation": "west"
-    },
-    {
-      "imagePath": "/assets/images/paintings/exhibit1/mountain.png",
-      "framePath": "/assets/images/textures/wood_light2.jpg",
-      "position": { "x": -12, "y": 2.3, "z": 6.7 },
-      "width": 3.5,
-      "height": 3.5,
-      "orientation": "south",
-      "spotlightProps": {
-        "angle": 0.8
-      }
-    },
-    {
-      "imagePath": "/assets/images/paintings/exhibit1/deer.png",
-      "framePath": "/assets/images/textures/wood_med.jpg",
-      "position": { "x": -16.3, "y": 1.4, "z": -18.75 },
-      "width": 0.7,
-      "height": 0.7,
-      "orientation": "north",
-      "showSpotlight": false,
-      "spotlightProps": {
-        "angle": 0.18
-      }
-    },
-    {
-      "imagePath": "/assets/images/paintings/exhibit1/frontier.png",
-      "framePath": "/assets/images/textures/wood_med.jpg",
-      "position": { "x": -14.3, "y": 1.4, "z": -18.75 },
-      "width": 0.7,
-      "height": 0.7,
-      "orientation": "north",
-      "showSpotlight": false,
-      "spotlightProps": {
-        "angle": 0.18
-      }
-    },
-    {
-      "imagePath": "/assets/images/paintings/exhibit1/stump.png",
-      "framePath": "/assets/images/textures/wood_med.jpg",
-      "position": { "x": -9.7, "y": 1.4, "z": -18.75 },
-      "width": 0.7,
-      "height": 0.7,
-      "orientation": "north",
-      "showSpotlight": false,
-      "spotlightProps": {
-        "angle": 0.18
-      }
-    },
-    {
-      "imagePath": "/assets/images/paintings/exhibit1/alley.png",
-      "framePath": "/assets/images/textures/wood_med.jpg",
-      "position": { "x": -7.7, "y": 1.4, "z": -18.75 },
-      "width": 0.7,
-      "height": 0.7,
-      "orientation": "north",
-      "showSpotlight": false,
-      "spotlightProps": {
-        "angle": 0.18
-      }
-    },
-    {
-      "imagePath": "/assets/images/paintings/exhibit1/phone.png",
-      "framePath": "/assets/images/textures/wood_light2.jpg",
-      "position": { "x": -6.28, "y": 1.8, "z": 1 },
-      "width": 2.5,
-      "height": 2.5,
-      "orientation": "east"
-    },
-    {
-      "imagePath": "/assets/images/paintings/exhibit1/lounging.png",
-      "framePath": "/assets/images/textures/wood_light2.jpg",
-      "position": { "x": -6.28, "y": 1.8, "z": -13 },
-      "width": 2.5,
-      "height": 2.5,
-      "orientation": "east"
-    }
-  ],
+  "paintings": [],
   "spotlights": [
     {
       "color": "#ffffff",

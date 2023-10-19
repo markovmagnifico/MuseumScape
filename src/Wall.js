@@ -39,11 +39,11 @@ export default class Wall {
       repeatX = width / 3;
       repeatY = depth / 3;
     } else if (wallType == 'wallEW') {
-      repeatX = depth / 3;
-      repeatY = height / 3;
+      repeatX = depth / 2;
+      repeatY = height / 2;
     } else if (wallType == 'wallNS') {
-      repeatX = width / 3;
-      repeatY = height / 3;
+      repeatX = width / 2;
+      repeatY = height / 2;
     } else {
       console.log('Error: Unrecognized wall type');
     }

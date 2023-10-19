@@ -20,7 +20,7 @@ export default class Player {
 
     // State variables
     // this.position = new THREE.Vector3(15, 0.71, 11);
-    this.position = new THREE.Vector3(-11, 0.71, -7);
+    this.position = new THREE.Vector3(-5, 0.71, -24);
     this.velocity = new THREE.Vector3(0, 0, 0);
     this.canJump = true;
     this.canDoubleJump = true;

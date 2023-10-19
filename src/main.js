@@ -3,7 +3,7 @@ import { scene, renderer, camera } from './SceneSetup.js';
 import Player from './Player.js';
 import Wall from './Wall.js';
 import GameStateManager from './GameStateManager.js';
-import Painting from './Painting.js';
+import DynamicSpotlight from './Spotlight.js';
 
 const canvas = document.querySelector('#gameCanvas');
 
