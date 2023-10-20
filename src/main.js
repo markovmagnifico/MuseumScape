@@ -3,8 +3,12 @@ import { scene, renderer, camera } from './SceneSetup.js';
 import Player from './Player.js';
 import Wall from './Wall.js';
 import GameStateManager from './GameStateManager.js';
+import { createCompass } from './utils.js';
+import { DEBUG } from './Constants.js';
 
 const canvas = document.querySelector('#gameCanvas');
+
+const playerStartPosition = { x: -12, y: 0.7, z: -18 };
 
 // Load the gameConfig init state
 let gameStateManager;
@@ -16,25 +20,25 @@ async function initGame() {
   gameStateManager = new GameStateManager(scene);
   gameStateManager.loadConfig(config);
 
-  player = new Player(scene, canvas, camera, gameStateManager);
+  player = new Player(
+    playerStartPosition,
+    scene,
+    canvas,
+    camera,
+    gameStateManager
+  );
 }
-
 await initGame();
+
+// Do post-init stuff
+
+if (DEBUG) {
+  // createCompass(scene, player.position);
+}
+// createCompass(scene, player.position);
 window.player = player;
 window.gameStateManager = gameStateManager;
 window.Wall = Wall;
-
-// const ambient = new THREE.AmbientLight(0xffffff, 2);
-// scene.add(ambient);
-
-// // Grid Floor
-// const size = 50; // Size of the grid
-// const divisions = 50; // Number of divisions on the grid
-// const gridHelper = new THREE.GridHelper(size, divisions);
-// scene.add(gridHelper);
-// // XYZ Axes
-// const axesHelper = new THREE.AxesHelper(5); // Size of the axes
-// scene.add(axesHelper);
 
 function animate() {
   requestAnimationFrame(animate);

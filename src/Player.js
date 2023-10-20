@@ -4,7 +4,7 @@ import { gravity } from './Constants';
 import Wall from './Wall';
 
 export default class Player {
-  constructor(scene, canvas, camera, stateManager) {
+  constructor(startPosition, scene, canvas, camera, stateManager) {
     // General onstants
     this.scene = scene;
     this.controls = null;
@@ -20,7 +20,11 @@ export default class Player {
 
     // State variables
     // this.position = new THREE.Vector3(15, 0.71, 11);
-    this.position = new THREE.Vector3(-13, 0.71, -5);
+    this.position = new THREE.Vector3(
+      startPosition.x,
+      startPosition.y,
+      startPosition.z
+    );
     this.velocity = new THREE.Vector3(0, 0, 0);
     this.canJump = true;
     this.canDoubleJump = true;
@@ -81,6 +85,10 @@ export default class Player {
             );
             this.canDoubleJump = false;
           }
+        }
+        if (event.code === 'Backquote') {
+          // press tilde ~ key for debugging
+          console.log(this.position);
         }
         if (
           event.code === 'ShiftLeft' &&

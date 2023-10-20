@@ -211,7 +211,7 @@ export default class Room {
   }
 
   createLights() {
-    const pointLight = new THREE.PointLight(0xffffff, 1, 0, 1.5);
+    const pointLight = new THREE.PointLight(0xffffff, 2, 0, 1.5);
     pointLight.position.set(this.center.x, this.height / 2, this.center.z);
     this.scene.add(pointLight);
   }

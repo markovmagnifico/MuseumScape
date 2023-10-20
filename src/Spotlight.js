@@ -23,7 +23,7 @@ export default class DynamicSpotlight {
 
   createBoundingBox(spotlightProps) {
     // Calculate bounding box position based on spotlight position
-    const halfHeight = 2;
+    const height = 4;
     this.boundingBox = new THREE.Box3(
       new THREE.Vector3(
         spotlightProps.position.x - 1.5,
@@ -32,7 +32,7 @@ export default class DynamicSpotlight {
       ),
       new THREE.Vector3(
         spotlightProps.position.x + 1.5,
-        spotlightProps.position.y - 4 + halfHeight * 2,
+        spotlightProps.position.y - 4 + height,
         spotlightProps.position.z + 1.5
       )
     );
@@ -46,7 +46,7 @@ export default class DynamicSpotlight {
       this.debugBox = new THREE.Mesh(boxGeometry, boxMaterial);
       this.debugBox.position.set(
         spotlightProps.position.x,
-        spotlightProps.position.y - halfHeight,
+        spotlightProps.position.y - height / 2,
         spotlightProps.position.z
       );
       this.scene.add(this.debugBox);
