@@ -8,7 +8,7 @@ import { DEBUG } from './Constants.js';
 
 const canvas = document.querySelector('#gameCanvas');
 
-const playerStartPosition = { x: -12, y: 0.7, z: -18 };
+const playerStartPosition = { x: -46, y: 7.8, z: 4 };
 
 // Load the gameConfig init state
 let gameStateManager;

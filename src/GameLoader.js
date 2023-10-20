@@ -20,7 +20,7 @@ export default class GameLoader {
   initFloors(floorData, scene) {
     const floors = [];
     floorData.forEach((data) => {
-      data.wallType = 'floor';
+      data.wallType = data.wallType ? data.wallType : 'floor';
       const floor = new Wall(scene, data);
       floors.push(floor);
     });

@@ -1,7 +1,8 @@
 {
   "floors": [
-    { "x": 5, "z": 5, "width": 1, "height": 1.5, "depth": 1 },
-    { "x": -5, "z": -3, "width": 1, "height": 2, "depth": 1 },
+    { "x": -4.5, "z": -11, "width": 3, "height": 2, "depth": 3 },
+    { "x": -1.5, "z": -11, "width": 3, "height": 1.33, "depth": 3 },
+    { "x": 1.5, "z": -11, "width": 3, "height": 0.66, "depth": 3 },
     {
       "x": 0,
       "y": -0.5,
@@ -9,11 +10,366 @@
       "width": 100,
       "height": 1,
       "depth": 100,
-      "color": "#fff5e1",
       "texturePath": "/assets/images/textures/wood_floor6.jpg"
+    },
+    {
+      "x": 0,
+      "y": 10.5,
+      "z": 0,
+      "width": 16,
+      "height": 1,
+      "depth": 26,
+      "texturePath": "/assets/images/textures/tile5.jpg"
+    },
+    {
+      "x": -16,
+      "y": 5.1,
+      "z": 0,
+      "width": 21,
+      "height": 0.25,
+      "depth": 28,
+      "texturePath": "/assets/images/textures/wood_floor1.jpg"
+    },
+    {
+      "x": 16,
+      "y": 5.1,
+      "z": 0,
+      "width": 21,
+      "height": 0.25,
+      "depth": 28,
+      "texturePath": "/assets/images/textures/wood_floor1.jpg"
+    },
+    {
+      "x": -8,
+      "y": 7.5,
+      "z": 11,
+      "width": 0.5,
+      "height": 5,
+      "depth": 12,
+      "texturePath": "/assets/images/textures/wood_med.jpg",
+      "wallType": "wallEW"
+    },
+    {
+      "x": -8,
+      "y": 7.5,
+      "z": -11,
+      "width": 0.5,
+      "height": 5,
+      "depth": 12,
+      "texturePath": "/assets/images/textures/wood_med.jpg",
+      "wallType": "wallEW"
+    },
+    {
+      "x": 0,
+      "y": 7.5,
+      "z": -13,
+      "width": 16,
+      "height": 5,
+      "depth": 0.5,
+      "texturePath": "/assets/images/textures/wood_med.jpg",
+      "wallType": "wallNS"
+    },
+    {
+      "x": 0,
+      "y": 7.5,
+      "z": 13,
+      "width": 16,
+      "height": 5,
+      "depth": 0.5,
+      "texturePath": "/assets/images/textures/wood_med.jpg",
+      "wallType": "wallNS"
+    },
+    {
+      "x": 8,
+      "y": 7.5,
+      "z": 11,
+      "width": 0.5,
+      "height": 5,
+      "depth": 6,
+      "texturePath": "/assets/images/textures/wood_med.jpg",
+      "wallType": "wallEW"
+    },
+    {
+      "x": 8,
+      "y": 7.5,
+      "z": -11,
+      "width": 0.5,
+      "height": 5,
+      "depth": 6,
+      "texturePath": "/assets/images/textures/wood_med.jpg",
+      "wallType": "wallEW"
+    },
+    {
+      "x": -24,
+      "y": 13,
+      "z": 0,
+      "width": 0.5,
+      "height": 6,
+      "depth": 2,
+      "texturePath": "/assets/images/textures/wood_med.jpg",
+      "wallType": "wallEW"
+    },
+    {
+      "x": -24,
+      "y": 2,
+      "z": 0,
+      "width": 0.5,
+      "height": 6,
+      "depth": 2,
+      "texturePath": "/assets/images/textures/wood_med.jpg",
+      "wallType": "wallEW"
+    },
+    {
+      "x": -39,
+      "y": -0.4,
+      "z": 0,
+      "width": 31,
+      "height": 1,
+      "depth": 16,
+      "texturePath": "/assets/images/textures/tile6.jpg",
+      "wallType": "floor"
+    },
+    {
+      "x": -30,
+      "y": 4,
+      "z": 5,
+      "width": 1.5,
+      "height": 0.25,
+      "depth": 1.5,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": -30,
+      "y": 2,
+      "z": 5,
+      "width": 0.33,
+      "height": 4,
+      "depth": 0.33,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": -35,
+      "y": 3,
+      "z": 2,
+      "width": 1.5,
+      "height": 0.25,
+      "depth": 1.5,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": -35,
+      "y": 1.5,
+      "z": 2,
+      "width": 0.33,
+      "height": 3,
+      "depth": 0.33,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": -39,
+      "y": 4,
+      "z": -5,
+      "width": 1.5,
+      "height": 0.25,
+      "depth": 1.5,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": -39,
+      "y": 2,
+      "z": -5,
+      "width": 0.33,
+      "height": 4,
+      "depth": 0.33,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": -43,
+      "y": 6.5,
+      "z": 1,
+      "width": 1.5,
+      "height": 0.25,
+      "depth": 1.5,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": -43,
+      "y": 3.25,
+      "z": 1,
+      "width": 0.33,
+      "height": 6.5,
+      "depth": 0.33,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": -46,
+      "y": 7,
+      "z": 4.5,
+      "width": 1.5,
+      "height": 0.25,
+      "depth": 1.5,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": -46,
+      "y": 3.5,
+      "z": 4.5,
+      "width": 0.33,
+      "height": 7,
+      "depth": 0.33,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": -52,
+      "y": 10,
+      "z": 0,
+      "width": 3,
+      "height": 0.5,
+      "depth": 6,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
     }
   ],
   "rooms": [
+    {
+      "name": "Exhbit 4 (east wing, floor 2)",
+      "x": 16,
+      "y": 5,
+      "z": 0,
+      "width": 16,
+      "depth": 16,
+      "doors": [
+        { "wall": "west", "position": 0 },
+        { "wall": "east", "position": 0 }
+      ]
+    },
+    {
+      "name": "Exhibit 3 (west parkour course)",
+      "x": -39,
+      "y": 0,
+      "z": 0,
+      "width": 30,
+      "height": 15,
+      "depth": 16,
+      "doors": [{ "wall": "east", "position": 0 }],
+      "paintings": [
+        {
+          "imagePath": "/assets/images/paintings/exhibit3/river.png",
+          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "wall": "north",
+          "offset": 9,
+          "width": 3,
+          "height": 3,
+          "yRelative": 6
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit3/zoom.png",
+          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "offset": 0,
+          "wall": "south",
+          "width": 4,
+          "height": 4,
+          "yRelative": 6
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit3/geom.png",
+          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "offset": -7,
+          "wall": "north",
+          "width": 6,
+          "height": 6,
+          "yRelative": 9
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit3/ztec.png",
+          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "offset": 0,
+          "wall": "east",
+          "width": 4,
+          "height": 4,
+          "yRelative": 12.5
+        }
+      ],
+      "spotlights": [
+        {
+          "wall": "north",
+          "offset": 9,
+          "spotlightY": 7,
+          "targetY": 6,
+          "angle": 0.9,
+          "intensity": 15
+        },
+        {
+          "wall": "south",
+          "offset": 0,
+          "spotlightY": 7,
+          "targetY": 6.3,
+          "angle": 1,
+          "intensity": 15
+        },
+        {
+          "wall": "north",
+          "offset": -7,
+          "spotlightY": 11,
+          "targetY": 9.3,
+          "angle": 1,
+          "intensity": 20
+        },
+        {
+          "wall": "east",
+          "offset": 0,
+          "spotlightY": 14,
+          "targetY": 12.5,
+          "angle": 0.8,
+          "intensity": 20
+        }
+      ]
+    },
+    {
+      "name": "Exhbit 3 (west wing, floor 2)",
+      "x": -16,
+      "y": 5,
+      "z": 0,
+      "width": 16,
+      "depth": 10,
+      "doors": [
+        { "wall": "west", "position": 0 },
+        { "wall": "east", "position": 0 }
+      ],
+      "paintings": [
+        {
+          "imagePath": "/assets/images/paintings/exhibit3/palette.png",
+          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "wall": "south",
+          "offset": -3,
+          "width": 2.5,
+          "height": 2.5,
+          "yRelative": 2
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit3/rect2.png",
+          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "wall": "south",
+          "offset": 3,
+          "width": 2.5,
+          "height": 2.5,
+          "yRelative": 2
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit3/rect1.png",
+          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "wall": "north",
+          "offset": 0,
+          "width": 3.5,
+          "height": 3.5,
+          "yRelative": 2.5
+        }
+      ],
+      "spotlights": [
+        { "wall": "south", "offset": 3, "targetY": 2.2, "angle": 0.6 },
+        { "wall": "south", "offset": -3, "targetY": 2.2, "angle": 0.6 },
+        { "wall": "north", "targetY": 2.5, "angle": 0.9 }
+      ]
+    },
     {
       "name": "Lobby (floor 1)",
       "x": 0,
@@ -240,6 +596,15 @@
           "yRelative": 1.6
         },
         {
+          "imagePath": "/assets/images/paintings/exhibit2/storm.png",
+          "framePath": "/assets/images/textures/wood_med.jpg",
+          "wall": "south",
+          "offset": 6,
+          "width": 2.5,
+          "height": 2.5,
+          "yRelative": 1.85
+        },
+        {
           "imagePath": "/assets/images/paintings/exhibit2/altar.png",
           "framePath": "/assets/images/textures/wood_med.jpg",
           "wall": "north",
@@ -300,6 +665,7 @@
         { "wall": "west", "angle": 1 },
         { "wall": "south", "offset": -6, "targetY": 2, "angle": 0.8 },
         { "wall": "south", "angle": 0.22, "targetY": 1.3 },
+        { "wall": "south", "offset": 6, "targetY": 2.2 },
         { "wall": "north", "angle": 0.4 },
         { "wall": "north", "offset": -2.5, "angle": 0.4 },
         { "wall": "north", "offset": 2.5, "angle": 0.4 },

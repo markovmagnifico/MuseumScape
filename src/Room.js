@@ -2,12 +2,14 @@ import * as THREE from 'three';
 import Wall from './Wall';
 import Painting from './Painting';
 import DynamicSpotlight from './Spotlight';
+import { ambientLight } from './Constants';
 
 export default class Room {
   constructor(
     scene,
     {
       x,
+      y = 0,
       z,
       width,
       depth,
@@ -26,6 +28,7 @@ export default class Room {
 
     // Room constants
     this.center = { x, z };
+    this.floorY = y;
     this.dimensions = { width, depth };
     this.height = height;
     this.doors = doors;
@@ -59,8 +62,16 @@ export default class Room {
         targetY = 1.6,
         spotlightY = 3.9,
       } = spotlightData;
-      let position = { x: this.center.x, y: spotlightY, z: this.center.z };
-      let targetPosition = { x: this.center.x, y: targetY, z: this.center.z };
+      let position = {
+        x: this.center.x,
+        y: this.floorY + spotlightY,
+        z: this.center.z,
+      };
+      let targetPosition = {
+        x: this.center.x,
+        y: this.floorY + targetY,
+        z: this.center.z,
+      };
 
       // Distance light is away from wall
       const wallDist = 3;
@@ -115,7 +126,11 @@ export default class Room {
     paintings.forEach((paintingData) => {
       const { wall, offset, width, height, yRelative, imagePath, framePath } =
         paintingData;
-      let position = { x: this.center.x, y: yRelative, z: this.center.z };
+      let position = {
+        x: this.center.x,
+        y: this.floorY + yRelative,
+        z: this.center.z,
+      };
       let orientation;
 
       switch (wall) {
@@ -173,7 +188,7 @@ export default class Room {
   createWall(x, z, width, depth, wallType) {
     const wall = new Wall(this.scene, {
       x,
-      y: this.height / 2,
+      y: this.floorY + this.height / 2,
       z,
       width,
       height: this.height,
@@ -186,15 +201,15 @@ export default class Room {
   createCeiling(texturePath) {
     const { width, depth } = this.dimensions;
     const { x, z } = this.center;
-    const y = this.height;
+    const y = this.floorY + this.height;
 
     const ceiling = new Wall(this.scene, {
       x: x,
       y: y,
       z: z,
-      width: width + 0.01,
+      width: width + 0.49,
       height: 0.2,
-      depth: depth + 0.01,
+      depth: depth + 0.49,
       texturePath: texturePath,
       wallType: 'floor',
     });
@@ -211,8 +226,12 @@ export default class Room {
   }
 
   createLights() {
-    const pointLight = new THREE.PointLight(0xffffff, 2, 0, 1.5);
-    pointLight.position.set(this.center.x, this.height / 2, this.center.z);
+    const pointLight = new THREE.PointLight(0xffffff, ambientLight, 0, 1.5);
+    pointLight.position.set(
+      this.center.x,
+      this.floorY + this.height / 2,
+      this.center.z
+    );
     this.scene.add(pointLight);
   }
 

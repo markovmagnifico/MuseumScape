@@ -14,7 +14,7 @@ export default class Player {
     // Player constants
     this.playerHeight = 2;
     this.playerRadius = 0.7;
-    this.speed = 0.08;
+    this.speed = 0.07;
     this.jumpForce = 0.15;
     this.airDashForce = 0.2;
 
