@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import Wall from './Wall.js';
 import Room from './Room.js';
 import Painting from './Painting.js';
+import DynamicSpotlight from './Spotlight.js';
 
 export default class GameLoader {
   static spotlightDefaults = {
@@ -43,15 +44,72 @@ export default class GameLoader {
         scene,
         data.imagePath,
         data.framePath,
-        new THREE.Vector3(data.position.x, data.position.y, data.position.z),
+        new THREE.Vector3(data.x, data.y, data.z),
         data.width,
         data.height,
-        data.orientation,
-        data.showSpotlight,
-        data.spotlightProps
+        data.orientation
       );
       paintings.push(painting);
     });
     return paintings;
+  }
+
+  initSpotlights(spotlightsData, scene) {
+    const spotlights = [];
+
+    spotlightsData.forEach((data) => {
+      const {
+        x,
+        y,
+        z,
+        color = 0xffffff,
+        intensity = 20,
+        distance = 8,
+        angle = 0.5,
+        penumbra = 0.5,
+        targetY = 1.6,
+        orientation = 'north', // default orientation
+      } = data;
+
+      const position = new THREE.Vector3(x, y, z);
+
+      // Calculate target position based on orientation
+      let targetOffset = new THREE.Vector3(0, -3 + targetY, 0);
+      switch (orientation) {
+        case 'north':
+          targetOffset.z = 1;
+          break;
+        case 'south':
+          targetOffset.z = -1;
+          break;
+        case 'east':
+          targetOffset.x = -1;
+          break;
+        case 'west':
+          targetOffset.x = 1;
+          break;
+      }
+
+      const targetPosition = position.clone().add(targetOffset);
+
+      const spotlightProps = {
+        color,
+        intensity,
+        distance,
+        angle,
+        penumbra,
+        position,
+        target: targetPosition,
+      };
+
+      const dynamicSpotlight = new DynamicSpotlight(
+        scene,
+        spotlightProps,
+        true
+      );
+      spotlights.push(dynamicSpotlight);
+    });
+
+    return spotlights;
   }
 }

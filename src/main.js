@@ -4,11 +4,9 @@ import Player from './Player.js';
 import Wall from './Wall.js';
 import GameStateManager from './GameStateManager.js';
 import { createCompass } from './utils.js';
-import { DEBUG } from './Constants.js';
+import { DEBUG, playerStartLoc } from './Constants.js';
 
 const canvas = document.querySelector('#gameCanvas');
-
-const playerStartPosition = { x: -46, y: 7.8, z: 4 };
 
 // Load the gameConfig init state
 let gameStateManager;
@@ -20,20 +18,14 @@ async function initGame() {
   gameStateManager = new GameStateManager(scene);
   gameStateManager.loadConfig(config);
 
-  player = new Player(
-    playerStartPosition,
-    scene,
-    canvas,
-    camera,
-    gameStateManager
-  );
+  player = new Player(playerStartLoc, scene, canvas, camera, gameStateManager);
 }
 await initGame();
 
 // Do post-init stuff
 
 if (DEBUG) {
-  // createCompass(scene, player.position);
+  createCompass(scene, player.position);
 }
 // createCompass(scene, player.position);
 window.player = player;

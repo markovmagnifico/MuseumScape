@@ -18,13 +18,20 @@ export default class GameStateManager {
   loadConfig(config) {
     const floors = this.loader.initFloors(config.floors, this.scene);
     const rooms = this.loader.initRooms(config.rooms, this.scene);
+    const paintings = this.loader.initPaintings(config.paintings, this.scene);
+    const spotlights = this.loader.initSpotlights(
+      config.spotlights,
+      this.scene
+    );
 
     this.addEntities(floors);
     rooms.forEach((room) => {
       this.addEntity(room);
       this.addEntities(room.walls);
       this.addEntities(room.paintings);
+      this.addEntities(paintings);
       this.addEntities(room.spotlights);
+      this.addEntities(spotlights);
     });
   }
 

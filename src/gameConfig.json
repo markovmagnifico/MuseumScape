@@ -36,8 +36,265 @@
       "z": 0,
       "width": 21,
       "height": 0.25,
-      "depth": 28,
+      "depth": 26,
       "texturePath": "/assets/images/textures/wood_floor1.jpg"
+    },
+    {
+      "x": 24,
+      "y": 7,
+      "z": -20.25,
+      "width": 0.5,
+      "height": 16,
+      "depth": 24,
+      "texturePath": "/assets/images/textures/wall1.jpg",
+      "wallType": "wallEW"
+    },
+    {
+      "x": 8.1,
+      "y": 7,
+      "z": -28.25,
+      "width": 0.5,
+      "height": 16,
+      "depth": 40,
+      "texturePath": "/assets/images/textures/wall1.jpg",
+      "wallType": "wallEW"
+    },
+    {
+      "x": 16,
+      "y": 2.5,
+      "z": -11,
+      "width": 16,
+      "height": 5,
+      "depth": 0.5,
+      "texturePath": "/assets/images/textures/wood_med.jpg",
+      "wallType": "wallNS"
+    },
+    {
+      "x": 16,
+      "y": 12.5,
+      "z": -8,
+      "width": 16,
+      "height": 5,
+      "depth": 0.5,
+      "texturePath": "/assets/images/textures/wood_med.jpg",
+      "wallType": "wallNS"
+    },
+    {
+      "x": 27.76,
+      "y": 7,
+      "z": -32.01,
+      "width": 8,
+      "height": 16,
+      "depth": 0.5,
+      "texturePath": "/assets/images/textures/wall1.jpg",
+      "wallType": "wallNS"
+    },
+    {
+      "x": 15.75,
+      "y": 7,
+      "z": -47,
+      "width": 16,
+      "height": 16,
+      "depth": 0.5,
+      "texturePath": "/assets/images/textures/wall1.jpg",
+      "wallType": "wallNS"
+    },
+    {
+      "x": 27.76,
+      "y": 7,
+      "z": -47,
+      "width": 8,
+      "height": 16,
+      "depth": 0.5,
+      "texturePath": "/assets/images/textures/wall1.jpg",
+      "wallType": "wallNS"
+    },
+    {
+      "x": 35.76,
+      "y": 2.5,
+      "z": -47,
+      "width": 8,
+      "height": 5,
+      "depth": 0.5,
+      "texturePath": "/assets/images/textures/wood_med.jpg",
+      "wallType": "wallNS",
+      "TODO": "ROOM GOES VERtICALLY BETWEEN ThIS AND NEXT"
+    },
+    {
+      "x": 35.76,
+      "y": 12.5,
+      "z": -47,
+      "width": 8,
+      "height": 5,
+      "depth": 0.5,
+      "texturePath": "/assets/images/textures/wood_med.jpg",
+      "wallType": "wallNS"
+    },
+    {
+      "x": 35.76,
+      "y": 7,
+      "z": -32.01,
+      "width": 8,
+      "height": 16,
+      "depth": 0.5,
+      "texturePath": "/assets/images/textures/wall1.jpg",
+      "wallType": "wallNS"
+    },
+    {
+      "x": 43.76,
+      "y": 7,
+      "z": -47,
+      "width": 8,
+      "height": 16,
+      "depth": 0.5,
+      "texturePath": "/assets/images/textures/wall1.jpg",
+      "wallType": "wallNS"
+    },
+    {
+      "x": 43.76,
+      "y": 7,
+      "z": -32,
+      "width": 8,
+      "height": 16,
+      "depth": 0.5,
+      "texturePath": "/assets/images/textures/wall1.jpg",
+      "wallType": "wallNS"
+    },
+    {
+      "x": 48,
+      "y": 7,
+      "z": -40,
+      "width": 0.5,
+      "height": 16,
+      "depth": 16,
+      "texturePath": "/assets/images/textures/wall1.jpg",
+      "wallType": "wallNS"
+    },
+    {
+      "x": 31,
+      "y": 15,
+      "z": -26,
+      "width": 45.5,
+      "height": 0.25,
+      "depth": 42,
+      "texturePath": "/assets/images/textures/tile4.jpg"
+    },
+    {
+      "x": 31,
+      "y": 0.25,
+      "z": -26,
+      "width": 45.5,
+      "height": 0.25,
+      "depth": 42,
+      "texturePath": "/assets/images/textures/tile4.jpg"
+    },
+    {
+      "x": 35.75,
+      "y": 4.95,
+      "z": -53,
+      "width": 8,
+      "height": 0.25,
+      "depth": 12.49,
+      "texturePath": "/assets/images/textures/wood_floor1.jpg"
+    },
+    {
+      "x": 20,
+      "y": 7,
+      "z": -22,
+      "width": 3,
+      "height": 0.25,
+      "depth": 3,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": 16,
+      "y": 6.99,
+      "z": -22,
+      "width": 16,
+      "height": 0.25,
+      "depth": 0.25,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": 11,
+      "y": 9,
+      "z": -29,
+      "width": 3,
+      "height": 0.25,
+      "depth": 3,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": 16,
+      "y": 8.99,
+      "z": -29,
+      "width": 16,
+      "height": 0.25,
+      "depth": 0.25,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": 12,
+      "y": 9,
+      "z": -43,
+      "width": 3,
+      "height": 0.25,
+      "depth": 3,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": 12,
+      "y": 4.5,
+      "z": -43,
+      "width": 0.25,
+      "height": 9,
+      "depth": 0.25,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": 27,
+      "y": 6.5,
+      "z": -44,
+      "width": 3,
+      "height": 0.25,
+      "depth": 3,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": 27,
+      "y": 6.49,
+      "z": -39,
+      "width": 0.25,
+      "height": 0.25,
+      "depth": 16,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": 44,
+      "y": 7.5,
+      "z": -39,
+      "width": 3,
+      "height": 0.25,
+      "depth": 3,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": 44,
+      "y": 7.49,
+      "z": -39,
+      "width": 0.25,
+      "height": 0.25,
+      "depth": 16,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
+    {
+      "x": 35.75,
+      "y": 4.9,
+      "z": -46,
+      "width": 2,
+      "height": 0.25,
+      "depth": 3,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
     },
     {
       "x": -8,
@@ -239,7 +496,133 @@
       "depth": 16,
       "doors": [
         { "wall": "west", "position": 0 },
-        { "wall": "east", "position": 0 }
+        { "wall": "north", "position": 0 }
+      ],
+      "paintings": [
+        {
+          "imagePath": "/assets/images/paintings/exhibit4/movement.png",
+          "framePath": "/assets/images/textures/wood_med.jpg",
+          "wall": "north",
+          "offset": 0,
+          "width": 3,
+          "height": 3,
+          "yRelative": 2.5
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit4/desert.png",
+          "framePath": "/assets/images/textures/wood_med.jpg",
+          "wall": "west",
+          "offset": 0,
+          "width": 3,
+          "height": 3,
+          "yRelative": 2.5
+        }
+      ],
+      "spotlights": [
+        { "wall": "north", "offset": 0, "targetY": 2.7, "angle": 0.65 },
+        { "wall": "west", "offset": 0, "targetY": 2.7, "angle": 0.65 }
+      ]
+    },
+    {
+      "name": "Exhbit 4 (side room)",
+      "x": 35.75,
+      "y": 5,
+      "z": -53,
+      "width": 8,
+      "depth": 12,
+      "doors": [{ "wall": "south", "position": 0 }],
+      "paintings": [
+        {
+          "imagePath": "/assets/images/paintings/exhibit5/ship.png",
+          "framePath": "/assets/images/textures/wood_med.jpg",
+          "wall": "south",
+          "offset": 0,
+          "width": 3.5,
+          "height": 3.5,
+          "yRelative": 2.5
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit5/kite.png",
+          "framePath": "/assets/images/textures/wood_med.jpg",
+          "wall": "east",
+          "offset": 2,
+          "width": 2.5,
+          "height": 2.5,
+          "yRelative": 2
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit5/pottery.png",
+          "framePath": "/assets/images/textures/wood_med.jpg",
+          "wall": "east",
+          "offset": -2,
+          "width": 2.5,
+          "height": 2.5,
+          "yRelative": 2
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit5/forest.png",
+          "framePath": "/assets/images/textures/wood_med.jpg",
+          "wall": "west",
+          "offset": 0,
+          "width": 1.8,
+          "height": 1.8,
+          "yRelative": 1.5
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit5/fields.png",
+          "framePath": "/assets/images/textures/wood_med.jpg",
+          "wall": "west",
+          "offset": -2.5,
+          "width": 1.8,
+          "height": 1.8,
+          "yRelative": 1.5
+        },
+        {
+          "imagePath": "/assets/images/paintings/exhibit5/alone.png",
+          "framePath": "/assets/images/textures/wood_med.jpg",
+          "wall": "west",
+          "offset": 2.5,
+          "width": 1.8,
+          "height": 1.8,
+          "yRelative": 1.5
+        }
+      ],
+      "spotlights": [
+        {
+          "wall": "south",
+          "offset": 0,
+          "targetY": 2,
+          "angle": 0.9,
+          "intensity": 15
+        },
+        {
+          "wall": "east",
+          "offset": -1.5,
+          "targetY": 2,
+          "angle": 1.2,
+          "intensity": 7.5
+        },
+        {
+          "wall": "east",
+          "offset": 1.5,
+          "targetY": 2,
+          "angle": 1.2,
+          "intensity": 7.5
+        },
+        {
+          "wall": "west",
+          "offset": 1.5,
+          "targetY": 2,
+          "angle": 1.2,
+          "intensity": 7.5
+        },
+        {
+          "wall": "west",
+          "offset": -1.5,
+          "targetY": 2,
+          "angle": 1.2,
+          "intensity": 7.5
+        }
       ]
     },
     {
@@ -338,7 +721,7 @@
       "paintings": [
         {
           "imagePath": "/assets/images/paintings/exhibit3/palette.png",
-          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "framePath": "/assets/images/textures/wood_med.jpg",
           "wall": "south",
           "offset": -3,
           "width": 2.5,
@@ -346,8 +729,8 @@
           "yRelative": 2
         },
         {
-          "imagePath": "/assets/images/paintings/exhibit3/rect2.png",
-          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "imagePath": "/assets/images/paintings/exhibit3/knot.png",
+          "framePath": "/assets/images/textures/wood_med.jpg",
           "wall": "south",
           "offset": 3,
           "width": 2.5,
@@ -356,7 +739,7 @@
         },
         {
           "imagePath": "/assets/images/paintings/exhibit3/rect1.png",
-          "framePath": "/assets/images/textures/wood_light2.jpg",
+          "framePath": "/assets/images/textures/wood_med.jpg",
           "wall": "north",
           "offset": 0,
           "width": 3.5,
@@ -675,47 +1058,116 @@
       ]
     }
   ],
-  "paintings": [],
-  "spotlights": [
+  "paintings": [
     {
-      "color": "#ffffff",
-      "intensity": 25,
-      "distance": 6,
-      "angle": 0.5,
-      "penumbra": 0.5,
-      "decay": 2,
-      "position": {
-        "x": -8.7,
-        "y": 3.9,
-        "z": -15.75
-      },
-      "target": {
-        "x": -8.7,
-        "y": 1.4,
-        "z": -18.75
-      }
+      "imagePath": "/assets/images/paintings/exhibit4/graph.png",
+      "framePath": "/assets/images/textures/wood_med.jpg",
+      "orientation": "east",
+      "x": 23.5,
+      "y": 9,
+      "z": -22,
+      "width": 2.5,
+      "height": 2.5
     },
     {
-      "color": "#ffffff",
-      "intensity": 25,
-      "distance": 6,
-      "angle": 0.5,
-      "penumbra": 0.5,
-      "decay": 2,
-      "position": {
-        "x": -15.3,
-        "y": 3.9,
-        "z": -15.75
-      },
-      "target": {
-        "x": -15.3,
-        "y": 1.4,
-        "z": -18.75
-      }
+      "imagePath": "/assets/images/paintings/exhibit4/crosshatch.png",
+      "framePath": "/assets/images/textures/wood_med.jpg",
+      "orientation": "west",
+      "x": 8.5,
+      "y": 11,
+      "z": -29,
+      "width": 2.5,
+      "height": 2.5
+    },
+    {
+      "imagePath": "/assets/images/paintings/exhibit4/bird.png",
+      "framePath": "/assets/images/textures/wood_med.jpg",
+      "orientation": "west",
+      "x": 8.5,
+      "y": 11,
+      "z": -43,
+      "width": 3,
+      "height": 3
+    },
+    {
+      "imagePath": "/assets/images/paintings/exhibit4/sphere.png",
+      "framePath": "/assets/images/textures/wood_med.jpg",
+      "orientation": "north",
+      "x": 12,
+      "y": 11,
+      "z": -46.7,
+      "width": 3,
+      "height": 3
+    },
+    {
+      "imagePath": "/assets/images/paintings/exhibit4/golden.png",
+      "framePath": "/assets/images/textures/wood_med.jpg",
+      "orientation": "north",
+      "x": 27,
+      "y": 8.6,
+      "z": -46.7,
+      "width": 3,
+      "height": 3
+    },
+    {
+      "imagePath": "/assets/images/paintings/exhibit4/streak.png",
+      "framePath": "/assets/images/textures/wood_med.jpg",
+      "orientation": "east",
+      "x": 47.5,
+      "y": 9.6,
+      "z": -39,
+      "width": 5,
+      "height": 5
     }
   ],
-  "items": [
-    { "x": 2, "y": 1, "z": 2, "type": "painting" },
-    { "x": -2, "y": 1, "z": -2, "type": "guard" }
+  "spotlights": [
+    {
+      "x": 19.5,
+      "y": 10.5,
+      "z": -22,
+      "orientation": "west",
+      "targetY": 2.7,
+      "angle": 0.65
+    },
+    {
+      "x": 11.5,
+      "y": 12.5,
+      "z": -29,
+      "orientation": "east",
+      "targetY": 2.7,
+      "angle": 0.65
+    },
+    {
+      "x": 11.5,
+      "y": 12.5,
+      "z": -43,
+      "orientation": "east",
+      "targetY": 2.7,
+      "angle": 0.65
+    },
+    {
+      "x": 12,
+      "y": 12.5,
+      "z": -43,
+      "orientation": "south",
+      "targetY": 2.7,
+      "angle": 0.65
+    },
+    {
+      "x": 27,
+      "y": 10,
+      "z": -43,
+      "orientation": "south",
+      "targetY": 2.7,
+      "angle": 0.65
+    },
+    {
+      "x": 44,
+      "y": 11.5,
+      "z": -39,
+      "orientation": "west",
+      "targetY": 2.7,
+      "angle": 0.9
+    }
   ]
 }

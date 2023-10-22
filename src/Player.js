@@ -16,7 +16,7 @@ export default class Player {
     this.playerRadius = 0.7;
     this.speed = 0.07;
     this.jumpForce = 0.15;
-    this.airDashForce = 0.2;
+    this.airDashForce = 0.15;
 
     // State variables
     // this.position = new THREE.Vector3(15, 0.71, 11);
