@@ -34,7 +34,7 @@ export default class Painting {
     frameMesh.position.copy(position);
 
     // Handle orientation
-    let canvasOffset = new THREE.Vector3(0, 0, frameThickness / 2 + 0.001);
+    let canvasOffset = new THREE.Vector3(0, 0, frameThickness / 2 + 0.005);
     switch (orientation) {
       case 'west':
         canvasMesh.rotation.y = Math.PI / 2;

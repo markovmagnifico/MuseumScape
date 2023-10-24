@@ -19,7 +19,7 @@ export default class Room {
       spotlights = [],
       ceiling = {
         exists: true,
-        texturePath: '/assets/images/textures/wood_light.jpg',
+        texturePath: '/assets/images/textures/wall1.jpg',
       },
     }
   ) {

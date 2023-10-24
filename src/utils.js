@@ -44,4 +44,20 @@ function createCompass(scene, position) {
   });
 }
 
-export { createCompass };
+function createFloatingText(scene, position, textContent) {
+  const loader = new FontLoader();
+
+  loader.load('fonts/helvetiker_regular.typeface.json', function (font) {
+    const textGeometry = new TextGeometry(textContent, {
+      font: font,
+      size: 0.5,
+      height: 0.1,
+    });
+    const textMaterial = new THREE.MeshBasicMaterial({ color: 0x1b1b1b });
+    const textMesh = new THREE.Mesh(textGeometry, textMaterial);
+    textMesh.position.set(position.x, position.y, position.z);
+    scene.add(textMesh);
+  });
+}
+
+export { createCompass, createFloatingText };

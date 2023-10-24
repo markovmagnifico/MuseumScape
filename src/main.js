@@ -3,8 +3,8 @@ import { scene, renderer, camera } from './SceneSetup.js';
 import Player from './Player.js';
 import Wall from './Wall.js';
 import GameStateManager from './GameStateManager.js';
-import { createCompass } from './utils.js';
-import { DEBUG, playerStartLoc } from './Constants.js';
+import { createCompass, createFloatingText } from './utils.js';
+import { DEBUG, playerStartLoc, ambientLight } from './Constants.js';
 
 const canvas = document.querySelector('#gameCanvas');
 
@@ -21,6 +21,17 @@ async function initGame() {
   player = new Player(playerStartLoc, scene, canvas, camera, gameStateManager);
 }
 await initGame();
+
+// Add some pointlights to the east parkour course
+const pointLight = new THREE.PointLight(0xffffff, ambientLight, 25, 2);
+pointLight.position.set(16, 8, -24);
+scene.add(pointLight);
+
+const pointLight2 = new THREE.PointLight(0xffffff, ambientLight, 25, 2);
+pointLight2.position.set(25, 8, -38);
+scene.add(pointLight2);
+
+createFloatingText(scene, { x: 10, y: 2, z: 2 }, 'Welcome to\nthe museum');
 
 // Do post-init stuff
 
