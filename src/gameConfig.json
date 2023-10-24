@@ -2,6 +2,16 @@
   "floors": [
     { "x": -4, "z": -11, "width": 4, "height": 2, "depth": 3.5 },
     { "x": 23, "z": -13.7, "width": 4, "height": 2, "depth": 4 },
+    { "x": 12, "z": 2, "width": 12, "height": 1, "depth": 0.5 },
+    {
+      "x": 12,
+      "y": 1,
+      "z": 2,
+      "width": 12.05,
+      "height": 0.05,
+      "depth": 0.58,
+      "texturePath": "/assets/images/textures/wood_med.jpg"
+    },
     {
       "x": 0,
       "y": -0.5,
@@ -116,8 +126,7 @@
       "height": 5,
       "depth": 0.5,
       "texturePath": "/assets/images/textures/wood_med.jpg",
-      "wallType": "wallNS",
-      "TODO": "ROOM GOES VERtICALLY BETWEEN ThIS AND NEXT"
+      "wallType": "wallNS"
     },
     {
       "x": 35.76,

@@ -37,7 +37,7 @@ export default class GameLoader {
       2.5,
       -25,
       'doubleJumpUnlocked',
-      'Double Jump Unlocked!\nPress space while in\nair to jump again.'
+      'Double Jump Unlocked!\nPress space while in the\nair to jump again.'
     );
     checks.push(doubleJumpUnlocker);
     const airDashUnlocker = new AbilityUnlocker(

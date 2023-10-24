@@ -6,6 +6,7 @@ import GameStateManager from './GameStateManager.js';
 import { createCompass, createFloatingText } from './utils.js';
 import { DEBUG, playerStartLoc, ambientLight } from './Constants.js';
 import Sign from './Sign.js';
+import texture2D from './texture2D.js';
 
 const canvas = document.querySelector('#gameCanvas');
 
@@ -23,6 +24,25 @@ async function initGame() {
 }
 await initGame();
 
+// Instantiate NPC
+const npcPosition = { x: 14, y: 1.1, z: 1.5 };
+const npcSize = { width: 1.3, height: 2.6 };
+const npcTexturePath = '/assets/images/other/shopkeep.png';
+new texture2D(npcPosition, npcSize, npcTexturePath, scene);
+const spotlight = new THREE.SpotLight(0xffffff, 12, 8, 0.2, 0.05, 0.8);
+spotlight.position.set(11.5, 3.5, 5.6);
+spotlight.target.position.set(npcPosition.x, npcPosition.y, npcPosition.z);
+spotlight.castShadow = true;
+const lightHelper = new THREE.SpotLightHelper(spotlight);
+scene.add(spotlight);
+// scene.add(lightHelper);
+
+// Shop background
+const shopPosition = { x: 12, y: 2, z: 0.5 };
+const shopSize = { width: 12, height: 6 };
+const shopTexturePath = '/assets/images/other/wall.png';
+new texture2D(shopPosition, shopSize, shopTexturePath, scene);
+
 // Add some pointlights to the east parkour course
 const pointLight = new THREE.PointLight(0xffffff, ambientLight, 25, 2);
 pointLight.position.set(16, 8, -24);
@@ -32,7 +52,7 @@ const pointLight2 = new THREE.PointLight(0xffffff, ambientLight, 25, 2);
 pointLight2.position.set(25, 8, -38);
 scene.add(pointLight2);
 
-createFloatingText(scene, { x: 10, y: 2, z: 2 }, 'Welcome to\nthe museum');
+// createFloatingText(scene, { x: 10, y: 2, z: 2 }, 'Welcome to\nthe museum');
 
 const sign1 = new Sign(
   new THREE.Vector3(-1.1, 0, -11.4),
