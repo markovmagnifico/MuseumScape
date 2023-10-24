@@ -5,6 +5,7 @@ import Wall from './Wall.js';
 import GameStateManager from './GameStateManager.js';
 import { createCompass, createFloatingText } from './utils.js';
 import { DEBUG, playerStartLoc, ambientLight } from './Constants.js';
+import Sign from './Sign.js';
 
 const canvas = document.querySelector('#gameCanvas');
 
@@ -32,6 +33,27 @@ pointLight2.position.set(25, 8, -38);
 scene.add(pointLight2);
 
 createFloatingText(scene, { x: 10, y: 2, z: 2 }, 'Welcome to\nthe museum');
+
+const sign1 = new Sign(
+  new THREE.Vector3(-1.1, 0, -11.4),
+  new THREE.Vector3(0, Math.PI / 4, 0),
+  'Stairs under\nconstruction'
+);
+const sign2 = new Sign(
+  new THREE.Vector3(9.7, 0.3, -14.7),
+  new THREE.Vector3(0, 2.5, 0),
+  'Space\nShift\nSpace',
+  60
+);
+const sign3 = new Sign(
+  new THREE.Vector3(11, 0.3, -14.2),
+  new THREE.Vector3(0, Math.PI, 0),
+  "Don't\nOverthink\nIt",
+  60
+);
+scene.add(sign1.group);
+scene.add(sign2.group);
+scene.add(sign3.group);
 
 // Do post-init stuff
 
