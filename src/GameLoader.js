@@ -3,6 +3,7 @@ import Wall from './Wall.js';
 import Room from './Room.js';
 import Painting from './Painting.js';
 import DynamicSpotlight from './Spotlight.js';
+import AbilityUnlocker from './abilityUnlocker.js';
 
 export default class GameLoader {
   static spotlightDefaults = {
@@ -26,6 +27,29 @@ export default class GameLoader {
       floors.push(floor);
     });
     return floors;
+  }
+
+  initAbilityChecks(scene) {
+    const checks = [];
+    const doubleJumpUnlocker = new AbilityUnlocker(
+      scene,
+      4.5,
+      2.5,
+      -25,
+      'doubleJumpUnlocked',
+      'Double Jump Unlocked!\nPress space while in\nair to jump again.'
+    );
+    checks.push(doubleJumpUnlocker);
+    const airDashUnlocker = new AbilityUnlocker(
+      scene,
+      -51,
+      13,
+      0,
+      'airDashUnlocked',
+      'Air Dash Unlocked!\nPress left shift in\nair to dash forwards.'
+    );
+    checks.push(airDashUnlocker);
+    return checks;
   }
 
   initRooms(roomData, scene) {

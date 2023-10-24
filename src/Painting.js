@@ -12,51 +12,90 @@ export default class Painting {
     height,
     orientation = 'north'
   ) {
-    // Canvas Logic
-    const paintingTexture = Painting.textureLoader.load(imagePath);
-    paintingTexture.minFilter = THREE.NearestFilter;
-    paintingTexture.magFilter = THREE.NearestFilter;
-    const canvasGeometry = new THREE.PlaneGeometry(width, height);
-    const canvasMaterial = new THREE.MeshToonMaterial({ map: paintingTexture });
-    const canvasMesh = new THREE.Mesh(canvasGeometry, canvasMaterial);
-    canvasMesh.position.set(position.x, position.y, position.z); // Offset to avoid z-fighting
+    this.group = new THREE.Group();
+    this.group.position.copy(position);
 
-    // Frame Logic
-    const frameThickness = 0.05;
-    const frameTexture = Painting.textureLoader.load(framePath); // Load the frame texture
-    const frameGeometry = new THREE.BoxGeometry(
-      width + 2 * frameThickness,
-      height + 2 * frameThickness,
-      frameThickness
-    );
-    const frameMaterial = new THREE.MeshToonMaterial({ map: frameTexture });
-    const frameMesh = new THREE.Mesh(frameGeometry, frameMaterial);
-    frameMesh.position.copy(position);
+    const canvasMesh = this.createCanvas(imagePath, width, height);
+    const frameMesh = this.createFrame(framePath, width, height);
 
-    // Handle orientation
-    let canvasOffset = new THREE.Vector3(0, 0, frameThickness / 2 + 0.005);
+    this.group.add(canvasMesh);
+    this.group.add(frameMesh);
+
     switch (orientation) {
       case 'west':
-        canvasMesh.rotation.y = Math.PI / 2;
-        frameMesh.rotation.y = Math.PI / 2;
-        canvasOffset = new THREE.Vector3(frameThickness / 2 + 0.001, 0, 0);
+        this.group.rotation.y = Math.PI / 2;
         break;
       case 'south':
-        canvasMesh.rotation.y = Math.PI;
-        frameMesh.rotation.y = Math.PI;
-        canvasOffset = new THREE.Vector3(0, 0, -(frameThickness / 2 + 0.001));
+        this.group.rotation.y = Math.PI;
         break;
       case 'east':
-        canvasMesh.rotation.y = -Math.PI / 2;
-        frameMesh.rotation.y = -Math.PI / 2;
-        canvasOffset = new THREE.Vector3(-(frameThickness / 2 + 0.001), 0, 0);
+        this.group.rotation.y = -Math.PI / 2;
         break;
-      case 'north':
-      // default is 'north', no need for rotation adjustments
+      default:
+        // 'north' orientation doesn't require any rotation
+        break;
     }
-    canvasMesh.position.add(canvasOffset);
 
-    scene.add(canvasMesh);
-    scene.add(frameMesh);
+    scene.add(this.group);
+  }
+
+  createCanvas(imagePath, width, height) {
+    const texture = Painting.textureLoader.load(imagePath);
+    const geometry = new THREE.PlaneGeometry(width, height);
+    const material = new THREE.MeshToonMaterial({ map: texture });
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.z = 0.015; // Position relative to group
+    return mesh;
+  }
+
+  createFrame(framePath, width, height) {
+    const frameThickness = 0.05;
+    const frameDepth = 0.05;
+    const frameGroup = new THREE.Group();
+
+    const texture = Painting.textureLoader.load(framePath);
+    const material = new THREE.MeshToonMaterial({ map: texture });
+
+    // Create top bar
+    const topGeometry = new THREE.BoxGeometry(
+      width + 2 * frameThickness,
+      frameThickness,
+      frameDepth
+    );
+    const topBar = new THREE.Mesh(topGeometry, material);
+    topBar.position.set(0, height / 2 + frameThickness / 2, 0);
+    frameGroup.add(topBar);
+
+    // Create bottom bar
+    const bottomGeometry = new THREE.BoxGeometry(
+      width + 2 * frameThickness,
+      frameThickness,
+      frameDepth
+    );
+    const bottomBar = new THREE.Mesh(bottomGeometry, material);
+    bottomBar.position.set(0, -height / 2 - frameThickness / 2, 0);
+    frameGroup.add(bottomBar);
+
+    // Create left bar
+    const leftGeometry = new THREE.BoxGeometry(
+      frameThickness,
+      height,
+      frameDepth
+    );
+    const leftBar = new THREE.Mesh(leftGeometry, material);
+    leftBar.position.set(-width / 2 - frameThickness / 2, 0, 0);
+    frameGroup.add(leftBar);
+
+    // Create right bar
+    const rightGeometry = new THREE.BoxGeometry(
+      frameThickness,
+      height,
+      frameDepth
+    );
+    const rightBar = new THREE.Mesh(rightGeometry, material);
+    rightBar.position.set(width / 2 + frameThickness / 2, 0, 0);
+    frameGroup.add(rightBar);
+
+    return frameGroup;
   }
 }

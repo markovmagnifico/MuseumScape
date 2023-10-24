@@ -1,5 +1,6 @@
 import GameLoader from './GameLoader';
 import DynamicSpotlight from './Spotlight';
+import AbilityUnlocker from './abilityUnlocker';
 
 export default class GameStateManager {
   constructor(scene) {
@@ -23,7 +24,9 @@ export default class GameStateManager {
       config.spotlights,
       this.scene
     );
+    const abilityChecks = this.loader.initAbilityChecks(this.scene);
 
+    this.addEntities(abilityChecks);
     this.addEntities(floors);
     rooms.forEach((room) => {
       this.addEntity(room);
@@ -61,6 +64,13 @@ export default class GameStateManager {
     const lights = this.getEntities(DynamicSpotlight);
     lights.forEach((light) => {
       light.update(player);
+    });
+  }
+
+  updateAbilities(player) {
+    const abilityUnlockers = this.getEntities(AbilityUnlocker);
+    abilityUnlockers.forEach((unlocker) => {
+      unlocker.update(player);
     });
   }
 }

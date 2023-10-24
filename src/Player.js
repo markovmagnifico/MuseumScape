@@ -5,7 +5,7 @@ import Wall from './Wall';
 
 export default class Player {
   constructor(startPosition, scene, canvas, camera, stateManager) {
-    // General onstants
+    // General constants
     this.scene = scene;
     this.controls = null;
     this.camera = camera;
@@ -17,6 +17,10 @@ export default class Player {
     this.speed = 0.07;
     this.jumpForce = 0.15;
     this.airDashForce = 0.15;
+
+    // Ability unlocks
+    this.doubleJumpUnlocked = false;
+    this.airDashUnlocked = false;
 
     // State variables
     // this.position = new THREE.Vector3(15, 0.71, 11);
@@ -30,6 +34,10 @@ export default class Player {
     this.canDoubleJump = true;
     this.canAirDash = true;
     this.isAirDashing = false;
+
+    // Audio constants
+    this.footstepsAudio = document.getElementById('playerFootsteps');
+    this.footstepsAudioOn = false;
 
     // Initialize geometry, controls, event handling, etc
     this.initPlayerModel();
@@ -79,7 +87,7 @@ export default class Player {
           if (this.canJump) {
             this.velocity.setY(this.velocity.y + this.jumpForce);
             this.canJump = false;
-          } else if (this.canDoubleJump) {
+          } else if (this.doubleJumpUnlocked && this.canDoubleJump) {
             this.velocity.setY(
               Math.max(this.velocity.y + this.jumpForce, this.jumpForce)
             );
@@ -92,6 +100,7 @@ export default class Player {
         }
         if (
           event.code === 'ShiftLeft' &&
+          this.airDashUnlocked &&
           !this.canJump &&
           this.canAirDash &&
           !this.isAirDashing
@@ -118,6 +127,10 @@ export default class Player {
       this.keystate.KeyA ||
       this.keystate.KeyD
     ) {
+      if (!this.footstepsAudioOn && this.canJump) {
+        this.footstepsAudio.play();
+        this.footstepsAudioOn = true;
+      }
       this.controls.getDirection(viewDirection);
 
       if (this.keystate.KeyW) {
@@ -143,6 +156,13 @@ export default class Player {
 
       this.position.add(movementVector.normalize().multiplyScalar(this.speed));
       this.boundingSphere.set(this.position, this.playerRadius);
+    } else if (this.footstepsAudioOn) {
+      this.footstepsAudioOn = false;
+      this.footstepsAudio.pause();
+    }
+    if (this.footstepsAudioOn && !this.canJump) {
+      this.footstepsAudioOn = false;
+      this.footstepsAudio.pause();
     }
 
     // Apply gravity

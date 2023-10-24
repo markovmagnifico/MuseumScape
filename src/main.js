@@ -69,6 +69,7 @@ function animate() {
   requestAnimationFrame(animate);
   player.update();
   gameStateManager.updateLights(player);
+  gameStateManager.updateAbilities(player);
   renderer.render(scene, camera);
 }
 animate();

@@ -41,7 +41,7 @@ export default class Sign {
     const context = canvas.getContext('2d');
     canvas.width = 512;
     canvas.height = 256;
-    context.font = `${fontSize}px Oswald`;
+    context.font = `${fontSize}px Oswald, sans-serif`;
     context.fillStyle = '#FFFAF0';
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.fillStyle = 'black';
