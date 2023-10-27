@@ -19,7 +19,7 @@ export default class Player {
     this.airDashForce = 0.15;
 
     // Ability unlocks
-    this.doubleJumpUnlocked = true;
+    this.doubleJumpUnlocked = false;
     this.airDashUnlocked = false;
 
     // State variables
