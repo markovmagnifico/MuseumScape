@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MuseumScape</title>
+    <link rel="icon" type="image/svg+xml" href="/museum.svg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Oswald:wght@400;700&family=Dancing+Script:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <audio id="playerFootsteps" loop>
+      <source src="/assets/audio/footsteps.mp3" type="audio/mp3" />
+    </audio>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+      }
+      .ability-unlock-text {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        border-radius: 2;
+        transform: translate(-50%, -50%);
+        font-family: 'Oswald', sans-serif; /* Using Oswald for heading */
+        font-size: 36px;
+        line-height: 1.4; /* Improved spacing between lines */
+        color: rgb(254, 255, 215);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Shadow for depth */
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px 24px;
+        border: 2px solid rgb(254, 255, 215); /* Light border around the text */
+        z-index: 1000; /* Ensure the text is on top */
+        transition: opacity 0.3s ease; /* Fade transition */
+        opacity: 0; /* Start with invisible text, use JS to fade in */
+      }
+
+      /* To animate the appearance, you'll set the opacity to 1 in JavaScript when you show the div */
+    </style>
+    <script type="module" crossorigin src="/assets/index-ba0fc54d.js"></script>
+  </head>
+  <body>
+    <canvas id="gameCanvas"></canvas>
+    
+  </body>
+</html>
