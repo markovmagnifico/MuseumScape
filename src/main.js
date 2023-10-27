@@ -14,7 +14,7 @@ const canvas = document.querySelector('#gameCanvas');
 let gameStateManager;
 let player;
 async function initGame() {
-  const response = await fetch('src/gameConfig.json');
+  const response = await fetch('/gameConfig.json');
   const config = await response.json();
 
   gameStateManager = new GameStateManager(scene);
@@ -22,7 +22,10 @@ async function initGame() {
 
   player = new Player(playerStartLoc, scene, canvas, camera, gameStateManager);
 }
-await initGame();
+async function initializeGame() {
+  await initGame();
+}
+initializeGame();
 
 // Instantiate NPC
 const npcPosition = { x: 14, y: 1.1, z: 1.5 };
