@@ -4,18 +4,19 @@ import Player from './Player.js';
 import Wall from './Wall.js';
 import GameStateManager from './GameStateManager.js';
 import { createCompass, createFloatingText } from './utils.js';
-import { DEBUG, playerStartLoc, ambientLight } from './Constants.js';
+import { DEBUG, playerStartLoc, ambientLight, BASE_URL } from './Constants.js';
 import Sign from './Sign.js';
 import texture2D from './texture2D.js';
 
 const canvas = document.querySelector('#gameCanvas');
-console.log('Hello!');
+console.log(process.env.NODE_ENV);
 
 // Load the gameConfig init state
 let gameStateManager;
 let player;
+let gameInitComplete = false;
 async function initGame() {
-  const response = await fetch('/gameConfig.json');
+  const response = await fetch(`${BASE_URL}/gameConfig.json`);
   const config = await response.json();
 
   gameStateManager = new GameStateManager(scene);
@@ -25,13 +26,14 @@ async function initGame() {
 }
 async function initializeGame() {
   await initGame();
+  gameInitComplete = true;
 }
 initializeGame();
 
 // Instantiate NPC
 const npcPosition = { x: 14, y: 1.1, z: 1.5 };
 const npcSize = { width: 1.3, height: 2.6 };
-const npcTexturePath = '/assets/images/other/shopkeep.png';
+const npcTexturePath = `${BASE_URL}/assets/images/other/shopkeep.png`;
 new texture2D(npcPosition, npcSize, npcTexturePath, scene);
 const spotlight = new THREE.SpotLight(0xffffff, 12, 8, 0.2, 0.05, 0.8);
 spotlight.position.set(11.5, 3.5, 5.6);
@@ -44,7 +46,7 @@ scene.add(spotlight);
 // Shop background
 const shopPosition = { x: 12, y: 2, z: 0.5 };
 const shopSize = { width: 12, height: 6 };
-const shopTexturePath = '/assets/images/other/wall.png';
+const shopTexturePath = `${BASE_URL}/assets/images/other/wall.png`;
 new texture2D(shopPosition, shopSize, shopTexturePath, scene);
 
 // Add some pointlights to the east parkour course
@@ -91,9 +93,11 @@ window.Wall = Wall;
 
 function animate() {
   requestAnimationFrame(animate);
-  player.update();
-  gameStateManager.updateLights(player);
-  gameStateManager.updateAbilities(player);
+  if (gameInitComplete) {
+    player.update();
+    gameStateManager.updateLights(player);
+    gameStateManager.updateAbilities(player);
+  }
   renderer.render(scene, camera);
 }
 animate();

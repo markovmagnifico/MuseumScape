@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { BASE_URL } from './Constants';
 
 export default class Sign {
   constructor(
@@ -11,7 +12,7 @@ export default class Sign {
     this.group = new THREE.Group();
 
     const loader = new THREE.TextureLoader();
-    loader.load(texturePath, (texture) => {
+    loader.load(`${BASE_URL}${texturePath}`, (texture) => {
       this.createPole(texture);
       this.createBoard(texture, signText, fontSize);
 

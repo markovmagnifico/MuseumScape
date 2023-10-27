@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { BASE_URL } from './Constants';
 
 export default class Painting {
   static textureLoader = new THREE.TextureLoader();
@@ -40,7 +41,7 @@ export default class Painting {
   }
 
   createCanvas(imagePath, width, height) {
-    const texture = Painting.textureLoader.load(imagePath);
+    const texture = Painting.textureLoader.load(`${BASE_URL}${imagePath}`);
     const geometry = new THREE.PlaneGeometry(width, height);
     const material = new THREE.MeshToonMaterial({ map: texture });
     const mesh = new THREE.Mesh(geometry, material);
@@ -53,7 +54,7 @@ export default class Painting {
     const frameDepth = 0.05;
     const frameGroup = new THREE.Group();
 
-    const texture = Painting.textureLoader.load(framePath);
+    const texture = Painting.textureLoader.load(`${BASE_URL}${framePath}`);
     const material = new THREE.MeshToonMaterial({ map: texture });
 
     // Create top bar

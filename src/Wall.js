@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { BASE_URL } from './Constants';
 
 export default class Wall {
   static geometryCache = new Map();
@@ -29,7 +30,7 @@ export default class Wall {
     }
     const cachedGeometry = Wall.geometryCache.get(geometryKey);
 
-    const texture = new THREE.TextureLoader().load(texturePath);
+    const texture = new THREE.TextureLoader().load(`${BASE_URL}${texturePath}`);
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.RepeatWrapping;
 

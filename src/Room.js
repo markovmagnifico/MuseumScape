@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import Wall from './Wall';
 import Painting from './Painting';
 import DynamicSpotlight from './Spotlight';
-import { ambientLight } from './Constants';
+import { ambientLight, BASE_URL } from './Constants';
 
 export default class Room {
   constructor(
