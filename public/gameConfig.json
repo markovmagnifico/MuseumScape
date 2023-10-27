@@ -28,13 +28,13 @@
       "width": 16,
       "height": 1,
       "depth": 26,
-      "texturePath": "/assets/images/textures/tile5.jpg"
+      "texturePath": "/assets/images/textures/tile6.jpg"
     },
     {
-      "x": -16,
+      "x": -16.15,
       "y": 5.1,
       "z": 0,
-      "width": 21,
+      "width": 20.8,
       "height": 0.25,
       "depth": 28,
       "texturePath": "/assets/images/textures/wood_floor1.jpg"
@@ -43,7 +43,7 @@
       "x": 16,
       "y": 5.1,
       "z": 0,
-      "width": 21,
+      "width": 20.5,
       "height": 0.25,
       "depth": 26,
       "texturePath": "/assets/images/textures/wood_floor1.jpg"
@@ -194,7 +194,7 @@
       "width": 45.5,
       "height": 0.25,
       "depth": 42,
-      "texturePath": "/assets/images/textures/tile4.jpg"
+      "texturePath": "/assets/images/textures/wood_floor6.jpg"
     },
     {
       "x": 35.75,
@@ -391,7 +391,7 @@
       "width": 31,
       "height": 1,
       "depth": 16,
-      "texturePath": "/assets/images/textures/tile6.jpg",
+      "texturePath": "/assets/images/textures/grass.jpg",
       "wallType": "floor"
     },
     {

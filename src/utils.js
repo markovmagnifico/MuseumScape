@@ -2,6 +2,12 @@ import * as THREE from 'three';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 
+function distance3D(a, b) {
+  return Math.sqrt(
+    Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2) + Math.pow(a.z - b.z, 2)
+  );
+}
+
 function createCompass(scene, position) {
   const arrowLength = 1; // Define the length of the arrows
   const arrowHeadSize = 0.2; // Define the size of the arrowhead
@@ -60,4 +66,4 @@ function createFloatingText(scene, position, textContent) {
   });
 }
 
-export { createCompass, createFloatingText };
+export { createCompass, createFloatingText, distance3D };

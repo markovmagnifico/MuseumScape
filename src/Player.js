@@ -19,7 +19,7 @@ export default class Player {
     this.airDashForce = 0.15;
 
     // Ability unlocks
-    this.doubleJumpUnlocked = false;
+    this.doubleJumpUnlocked = true;
     this.airDashUnlocked = false;
 
     // State variables
@@ -66,6 +66,21 @@ export default class Player {
   initControls(canvas) {
     this.controls = new PointerLockControls(this.camera, canvas);
     this.scene.add(this.controls.getObject());
+
+    // Set initial position
+    this.camera.position.set(
+      this.position.x,
+      this.position.y + this.playerHeight * 0.3,
+      this.position.z
+    );
+
+    // Set initial direction
+    const initialDirection = new THREE.Vector3(-0.583, -0.054, -0.81);
+    const target = new THREE.Vector3()
+      .copy(this.position)
+      .add(initialDirection.multiplyScalar(10)); // scale as needed
+    this.camera.lookAt(target);
+
     canvas.addEventListener('click', () => {
       this.controls.lock();
     });
@@ -96,7 +111,10 @@ export default class Player {
         }
         if (event.code === 'Backquote') {
           // press tilde ~ key for debugging
-          console.log(this.position);
+          const cameraDirection = new THREE.Vector3();
+          this.camera.getWorldDirection(cameraDirection);
+          console.log('Camera Direction:', cameraDirection);
+          console.log('Player Position:', this.position);
         }
         if (
           event.code === 'ShiftLeft' &&

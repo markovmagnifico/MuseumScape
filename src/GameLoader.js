@@ -49,6 +49,15 @@ export default class GameLoader {
       'Air Dash Unlocked!\nPress left shift in\nair to dash forwards.'
     );
     checks.push(airDashUnlocker);
+    const endGameChecker = new AbilityUnlocker(
+      scene,
+      44,
+      10,
+      -38,
+      'gameComplete',
+      "You've reached the end!\nThanks for visiting the museum."
+    );
+    checks.push(endGameChecker);
     return checks;
   }
 

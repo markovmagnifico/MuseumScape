@@ -21,7 +21,7 @@ export default class AbilityUnlocker {
   }
 
   createBoundingBox(x, y, z) {
-    const halfSize = 2;
+    const halfSize = 1.5;
     this.boundingBox = new THREE.Box3(
       new THREE.Vector3(x - halfSize, y - halfSize, z - halfSize),
       new THREE.Vector3(x + halfSize, y + halfSize, z + halfSize)
