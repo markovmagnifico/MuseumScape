@@ -9,6 +9,7 @@ import Sign from './Sign.js';
 import texture2D from './texture2D.js';
 
 const canvas = document.querySelector('#gameCanvas');
+console.log('Hello!');
 
 // Load the gameConfig init state
 let gameStateManager;
