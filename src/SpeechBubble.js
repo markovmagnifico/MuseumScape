@@ -17,7 +17,7 @@ export default class SpeechBubble {
     "But I prefer to say we're inside your head right now.",
     'Am I saying these words, or are you? Hahaha!',
     'Anyways...',
-    "There's a number of exhbits in the museum already, feel free to explore.",
+    "There's a number of exhibits in the museum already, feel free to explore.",
     'Oh, and some of the paintings are more than paintings...',
     'They give you special powers!',
     "I'll be here if you need any help. Enjoy the art!",
